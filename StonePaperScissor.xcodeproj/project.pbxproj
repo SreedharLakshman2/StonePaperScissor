@@ -60,6 +60,7 @@
 		F469DEA829CD68F700F63183 /* StonePaperScissor */ = {
 			isa = PBXGroup;
 			children = (
+				F469DEB729CD690000F63183 /* Info.plist */,
 				F469DEA929CD68F700F63183 /* AppDelegate.swift */,
 				F469DEAB29CD68F700F63183 /* SceneDelegate.swift */,
 				F469DEAD29CD68F700F63183 /* ViewController.swift */,
@@ -68,7 +69,6 @@
 				F469DEAF29CD68F700F63183 /* Main.storyboard */,
 				F469DEB229CD690000F63183 /* Assets.xcassets */,
 				F469DEB429CD690000F63183 /* LaunchScreen.storyboard */,
-				F469DEB729CD690000F63183 /* Info.plist */,
 			);
 			path = StonePaperScissor;
 			sourceTree = "<group>";
