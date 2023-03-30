@@ -15,6 +15,7 @@
 		F469DEB629CD690000F63183 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F469DEB429CD690000F63183 /* LaunchScreen.storyboard */; };
 		F4CB050129D16F4F0032CD0F /* UserInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB050029D16F4F0032CD0F /* UserInteractionView.swift */; };
 		F4CB050329D172840032CD0F /* UserInteractionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB050229D172840032CD0F /* UserInteractionViewModel.swift */; };
+		F4EED3A829D5664F00FC7444 /* small-miracle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4EED3A729D5664F00FC7444 /* small-miracle.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F469DEB729CD690000F63183 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4CB050029D16F4F0032CD0F /* UserInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionView.swift; sourceTree = "<group>"; };
 		F4CB050229D172840032CD0F /* UserInteractionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionViewModel.swift; sourceTree = "<group>"; };
+		F4EED3A729D5664F00FC7444 /* small-miracle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "small-miracle.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				F469DEB729CD690000F63183 /* Info.plist */,
+				F4EED3A729D5664F00FC7444 /* small-miracle.mp3 */,
 				F469DEA929CD68F700F63183 /* AppDelegate.swift */,
 				F469DEAB29CD68F700F63183 /* SceneDelegate.swift */,
 				F469DEAD29CD68F700F63183 /* ViewController.swift */,
@@ -133,6 +136,7 @@
 			files = (
 				F469DEB629CD690000F63183 /* LaunchScreen.storyboard in Resources */,
 				F469DEB329CD690000F63183 /* Assets.xcassets in Resources */,
+				F4EED3A829D5664F00FC7444 /* small-miracle.mp3 in Resources */,
 				F469DEB129CD68F700F63183 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
