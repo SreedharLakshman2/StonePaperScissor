@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         addChild(childView)
         childView.view.frame = self.view.bounds
         self.view.addSubview(childView.view)
+        self.view.backgroundColor = .black
         childView.didMove(toParent: self)
     }
 
