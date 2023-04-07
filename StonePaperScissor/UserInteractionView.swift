@@ -121,7 +121,7 @@ struct UserInteractionView: View {
             
         }.background(Color.black)
         .onAppear{
-           // MusicPlayer.shared.startBackgroundMusic()
+            MusicPlayer.shared.startBackgroundMusic()
         }
     }
     
