@@ -13,27 +13,67 @@ struct UserInteractionView: View {
     
     @ObservedObject var userInteractionViewModel = UserInteractionViewModel()
     
+    init(){
+           UITableView.appearance().backgroundColor = .black
+       }
+       
     var body: some View {
         ZStack {
             VStack {
                 // UserView
                     VStack(alignment: .center) {
-                        VStack(spacing: 20) {
-                            HStack(alignment: .center){
-                                Text("User Points: \(userInteractionViewModel.userPoint)")
-                                    .font(.largeTitle)
-                                    .background(Color.cyan)
-                                    .foregroundColor(Color.white)
+                        VStack(spacing: 10) {
+                            //Speaker View
+                            HStack {
+                                Spacer()
+                                VStack(spacing: 5) {
+                                    Button(action: {
+                                        self.userInteractionViewModel.backgroundMusicIsEnabled.toggle()
+                                        if userInteractionViewModel.backgroundMusicIsEnabled {
+                                            MusicPlayer.shared.startBackgroundMusic()
+                                        }
+                                        else {
+                                            MusicPlayer.shared.stopBackgroundMusic()
+                                        }
+                                    }) {
+                                        Image(systemName:self.userInteractionViewModel.backgroundMusicIsEnabled ? "speaker" : "speaker.slash").resizable()
+                                            .frame(width: 40,height: 40)
+                                            .foregroundColor(.black)
+                                    }
+                                    Text("Music").bold().foregroundColor(.black)
+                                }.padding(.trailing, 20)
                             }
-                        }
+                            
+                            //User Point view
+                            HStack(alignment: .center){
+                                Spacer()
+                                HStack {
+                                    Text("  User Points: \(userInteractionViewModel.userPoint)  ")
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .background(Color.cyan)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(5.0)
+                                    Text("  AI Points: \(userInteractionViewModel.appAIPoint)  ")
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .background(Color.cyan)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(5.0)
+                                }
+                                Spacer()
+                            }
+                        }.padding(.all,10)
                         Spacer()
                         VStack(spacing: 10) {
                             HStack(alignment: .center, spacing: 20){
-                                Text("Choose your move")
-                                    .font(.largeTitle)
+                                Text("  Choose your move  ")
+                                    .font(.system(size: 25))
+                                    .bold()
                                     .background(Color.cyan)
                                     .foregroundColor(Color.white)
                                     .clipShape(Rectangle())
+                                    .cornerRadius(5.0)
                             }
                             HStack(alignment: .center,spacing: 15) {
                                 Spacer()
@@ -42,8 +82,8 @@ struct UserInteractionView: View {
                                     .resizable()
                                     .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Stone" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
                                     .frame(width: 100, height: 100)
-                                    .clipShape(Circle())
-                                    .background(Color.black)
+                                    //.clipShape(Circle())
+                                    //.background(Color.black)
                                     .onTapGesture{
                                         userTapOnElement(senderId: "Stone")
                                         refresh()
@@ -54,7 +94,7 @@ struct UserInteractionView: View {
                                     .resizable()
                                     .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Paper" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
                                     .frame(width: 100, height: 100)
-                                    .clipShape(Circle())
+                                    //.clipShape(Circle())
                                     .onTapGesture {
                                         userTapOnElement(senderId: "Paper")
                                         refresh()
@@ -65,7 +105,7 @@ struct UserInteractionView: View {
                                     .resizable()
                                     .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Scissor" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
                                     .frame(width: 100, height: 100)
-                                    .clipShape(Circle())
+                                    //.clipShape(Circle())
                                     .onTapGesture {
                                         userTapOnElement(senderId: "Scissor")
                                         refresh()
@@ -75,53 +115,57 @@ struct UserInteractionView: View {
                             
                         }
                         Spacer()
-                        Spacer()
-                    }.background(Color.black)
+                    }//.background(Color.black)
                     .padding(.all, 10)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
                     
 
             }.padding(.all, 0)
-                .background(Color.black)
-            if (userInteractionViewModel.showAlert) && (userInteractionViewModel.whosePoint != "") {
-                VStack {
-                    VStack(alignment: .center) {
-                        Spacer()
-                        HStack(alignment: .center) {
-                            Spacer()
-                            VStack {
-                                Image(userInteractionViewModel.randomlyAISelectedItem).resizable()
-                                    .frame(width: 50,height: 100)
-                                Text("AI's Choice")
-                                    .foregroundColor(.white)
-                            }
-                            Spacer().foregroundColor(Color.white)
-                            Text(userInteractionViewModel.whosePoint == "Tie" ? "Tie" : userInteractionViewModel.whosePoint == "User" ? "You got +1 point" : "AI got +1 point")
-                                .bold()
-                            Spacer()
-                            VStack {
-                                Image(userInteractionViewModel.userSelectedItem).resizable()
-                                    .frame(width: 50,height: 100)
-                                Text("Your's Choice")
-                                    .foregroundColor(.white)
-                            }
-                            Spacer()
-                        }.padding(.all, 10)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                            .background(Color.white)
-                        
-                        Spacer()
-                    }.padding(.all, 0)
-                        .background(Color.black)
-                }.padding(.all,0)
-                .disabled(true)
-                .background(Color.black)
-               
-            }
-            
-        }.background(Color.black)
+                //.background(Color.black)
+                    if (userInteractionViewModel.showAlert) && (userInteractionViewModel.whosePoint != "") {
+                        Form {
+                            VStack(alignment: .center) {
+                                Spacer()
+                                Spacer()
+                                Spacer()
+                                Spacer()
+                                HStack(alignment: .center) {
+                                    VStack {
+                                        Image(userInteractionViewModel.randomlyAISelectedItem).resizable()
+                                            .frame(width: 50,height: 100)
+                                        Text("AI's Choice")
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 20))
+                                    }
+                                    Spacer().foregroundColor(Color.white)
+                                    Text(userInteractionViewModel.whosePoint == "Tie" ? "Tie" : userInteractionViewModel.whosePoint == "User" ? "You got +1 point" : "AI got +1 point")
+                                        .bold()
+                                        .foregroundColor(userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red)
+                                    Spacer()
+                                    VStack {
+                                        Image(userInteractionViewModel.userSelectedItem).resizable()
+                                            .frame(width: 50,height: 100)
+                                        Text("Your's Choice")
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 20))
+                                    }
+                                    Spacer()
+                                }.padding(.all, 10)
+                                .background(Color.white)
+                                Spacer()
+                                Spacer()
+                                Spacer()
+                                Spacer()
+
+                            }.padding(.all, 0)
+                            .listRowBackground(userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red)
+                            .cornerRadius(15)
+                        }.padding(.all,0)
+                    }
+        }
         .onAppear{
-            MusicPlayer.shared.startBackgroundMusic()
+            userInteractionViewModel.backgroundMusicIsEnabled = false
+            MusicPlayer.shared.stopBackgroundMusic()
         }
     }
     

@@ -22,6 +22,7 @@ class UserInteractionViewModel: ObservableObject {
     
     @Published var isPlayerEnteredName: Bool = false
     @Published var playerName: String = ""
+    @Published var backgroundMusicIsEnabled: Bool = true
     
     
 }
