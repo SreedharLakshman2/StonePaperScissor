@@ -15,13 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if error != nil || user == nil {
-              // Show the app's signed-out state.
-            } else {
-              // Show the app's signed-in state.
-            }
-          }
+        
+//        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+//            if error != nil || user == nil {
+//              // Show the app's signed-out state.
+//                window.rootViewController = ViewController()
+//            } else {
+//              // Show the app's signed-in state.
+//              window.rootViewController = UserInteractionViewController()
+//            }
+//          }
+        
         return true
     }
 

@@ -12,21 +12,17 @@ import GoogleSignIn
 class ViewController: UIViewController {
     
     @IBOutlet weak var signInWithGoogleButtonOutlet: UIButton!
-    
+    @IBOutlet weak var signInWithAppleAccountButtonOutlet: UIButton!
+    @IBOutlet weak var playWithOutSignIn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
-    func setButtonImage(){
-        let imgName = "Google"
-        let image = UIImage(named: "\(imgName).png")!
-        self.signInWithGoogleButtonOutlet.setImage(image, for: .normal)
-    }
-    @IBAction func signIn(sender: UIButton) {
+    
+    @IBAction func signInWithGoogleButtonAction(_ sender: UIButton) {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-            //guard error == nil else { return }
-            
             if error != nil {
                 print(error?.localizedDescription)
             }
@@ -36,16 +32,33 @@ class ViewController: UIViewController {
                 GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
                     guard error == nil else { return }
                     guard let signInResult = signInResult else { return }
+                    UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
+                    UserDefaults.standard.set(true, forKey: "isSignInCompletedWithGoogleAccount") //Bool
                     let user = signInResult.user
                     let emailAddress = user.profile?.email
                     let fullName = user.profile?.name
                     let givenName = user.profile?.givenName
                     let familyName = user.profile?.familyName
                     let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "UserInteraction", bundle:nil)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
+                    self.present(nextViewController, animated:true, completion:nil)
                 }
             }
             
         }
+      }
+    
+    @IBAction func signInWithAppleButtonAction(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func playWithoutLoginButtonAction(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
+        let storyBoard : UIStoryboard = UIStoryboard(name: "UserInteraction", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
+        self.present(nextViewController, animated:true, completion:nil)
+
     }
     
     //SignOut
