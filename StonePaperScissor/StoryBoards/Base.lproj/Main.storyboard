@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,13 +16,93 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlf-Y5-b24">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kVo-NX-yXq">
+                                        <rect key="frame" x="10" y="0.0" width="373" height="759"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-cb-t4N">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="579"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="eSK-Gw-nZt"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5R-vm-z7R">
+                                                <rect key="frame" x="0.0" y="589" width="373" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="E4W-J4-ONQ"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="apple.logo" catalog="system" title="  SignIn with apple">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-OX-K9L">
+                                                <rect key="frame" x="0.0" y="649" width="373" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="0SK-ad-AV8"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="  SignIn with google" titleAlignment="automatic">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="signInSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gHQ-uo-Gid"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDE-pu-2oB">
+                                                <rect key="frame" x="0.0" y="709" width="373" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="hLE-C9-8JY"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="play" catalog="system" title="  Play without signIn">
+                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="kVo-NX-yXq" firstAttribute="top" secondItem="tlf-Y5-b24" secondAttribute="top" id="2ox-b0-eA2"/>
+                                    <constraint firstItem="kVo-NX-yXq" firstAttribute="leading" secondItem="tlf-Y5-b24" secondAttribute="leading" constant="10" id="Qpb-eL-Swo"/>
+                                    <constraint firstAttribute="trailing" secondItem="kVo-NX-yXq" secondAttribute="trailing" constant="10" id="e2R-du-1fw"/>
+                                    <constraint firstAttribute="bottom" secondItem="kVo-NX-yXq" secondAttribute="bottom" id="hKw-Vf-m83"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="CF5-MJ-lRB"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CF5-MJ-lRB" firstAttribute="bottom" secondItem="tlf-Y5-b24" secondAttribute="bottom" id="0FH-Cc-udK"/>
+                            <constraint firstItem="tlf-Y5-b24" firstAttribute="top" secondItem="CF5-MJ-lRB" secondAttribute="top" id="Ndn-D6-RQS"/>
+                            <constraint firstItem="tlf-Y5-b24" firstAttribute="leading" secondItem="CF5-MJ-lRB" secondAttribute="leading" id="XwQ-DH-Grw"/>
+                            <constraint firstItem="CF5-MJ-lRB" firstAttribute="trailing" secondItem="tlf-Y5-b24" secondAttribute="trailing" id="bJs-Te-n7j"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="signInWithGoogleButtonOutlet" destination="OYf-OX-K9L" id="dBT-Vj-HiP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5" y="5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apple.logo" catalog="system" width="105" height="128"/>
+        <image name="play" catalog="system" width="117" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

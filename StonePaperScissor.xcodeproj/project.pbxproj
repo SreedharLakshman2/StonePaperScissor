@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FF7836A29E56BE20044E177 /* UserInteractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7836929E56BE20044E177 /* UserInteractionViewController.swift */; };
+		1FF7836C29E56C110044E177 /* UserInteraction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF7836B29E56C110044E177 /* UserInteraction.storyboard */; };
 		F469DEAA29CD68F700F63183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469DEA929CD68F700F63183 /* AppDelegate.swift */; };
 		F469DEAC29CD68F700F63183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469DEAB29CD68F700F63183 /* SceneDelegate.swift */; };
 		F469DEAE29CD68F700F63183 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469DEAD29CD68F700F63183 /* ViewController.swift */; };
@@ -16,9 +18,15 @@
 		F4CB050129D16F4F0032CD0F /* UserInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB050029D16F4F0032CD0F /* UserInteractionView.swift */; };
 		F4CB050329D172840032CD0F /* UserInteractionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB050229D172840032CD0F /* UserInteractionViewModel.swift */; };
 		F4EED3A829D5664F00FC7444 /* small-miracle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4EED3A729D5664F00FC7444 /* small-miracle.mp3 */; };
+		FE6671EACFE879B291C62DC8 /* Pods_StonePaperScissor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0690D5F13150E3456DCA28E2 /* Pods_StonePaperScissor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01916FC2E90AE4661AEFE082 /* Pods-StonePaperScissor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StonePaperScissor.debug.xcconfig"; path = "Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor.debug.xcconfig"; sourceTree = "<group>"; };
+		0690D5F13150E3456DCA28E2 /* Pods_StonePaperScissor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StonePaperScissor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FF7836929E56BE20044E177 /* UserInteractionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionViewController.swift; sourceTree = "<group>"; };
+		1FF7836B29E56C110044E177 /* UserInteraction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserInteraction.storyboard; sourceTree = "<group>"; };
+		8429E009F7F2EE5ECE1C90F9 /* Pods-StonePaperScissor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StonePaperScissor.release.xcconfig"; path = "Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor.release.xcconfig"; sourceTree = "<group>"; };
 		F469DEA629CD68F700F63183 /* StonePaperScissor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StonePaperScissor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F469DEA929CD68F700F63183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F469DEAB29CD68F700F63183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6671EACFE879B291C62DC8 /* Pods_StonePaperScissor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +66,7 @@
 			children = (
 				F469DEAF29CD68F700F63183 /* Main.storyboard */,
 				F469DEB429CD690000F63183 /* LaunchScreen.storyboard */,
+				1FF7836B29E56C110044E177 /* UserInteraction.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -81,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				F469DEAD29CD68F700F63183 /* ViewController.swift */,
+				1FF7836929E56BE20044E177 /* UserInteractionViewController.swift */,
 				F4CB050029D16F4F0032CD0F /* UserInteractionView.swift */,
 			);
 			path = View;
@@ -94,11 +105,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		400C8DFE95611DDC6FAC5BEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0690D5F13150E3456DCA28E2 /* Pods_StonePaperScissor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8841F7128F95AD95C688CCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01916FC2E90AE4661AEFE082 /* Pods-StonePaperScissor.debug.xcconfig */,
+				8429E009F7F2EE5ECE1C90F9 /* Pods-StonePaperScissor.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F469DE9D29CD68F700F63183 = {
 			isa = PBXGroup;
 			children = (
 				F469DEA829CD68F700F63183 /* StonePaperScissor */,
 				F469DEA729CD68F700F63183 /* Products */,
+				A8841F7128F95AD95C688CCC /* Pods */,
+				400C8DFE95611DDC6FAC5BEB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F469DEBA29CD690000F63183 /* Build configuration list for PBXNativeTarget "StonePaperScissor" */;
 			buildPhases = (
+				8454C1C2336C6072919ACE8B /* [CP] Check Pods Manifest.lock */,
 				F469DEA229CD68F700F63183 /* Sources */,
 				F469DEA329CD68F700F63183 /* Frameworks */,
 				F469DEA429CD68F700F63183 /* Resources */,
+				BEB9D420C94EAE7C6FF37F90 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,6 +216,7 @@
 			files = (
 				F469DEB629CD690000F63183 /* LaunchScreen.storyboard in Resources */,
 				F469DEB329CD690000F63183 /* Assets.xcassets in Resources */,
+				1FF7836C29E56C110044E177 /* UserInteraction.storyboard in Resources */,
 				F4EED3A829D5664F00FC7444 /* small-miracle.mp3 in Resources */,
 				F469DEB129CD68F700F63183 /* Main.storyboard in Resources */,
 			);
@@ -191,11 +224,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8454C1C2336C6072919ACE8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StonePaperScissor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEB9D420C94EAE7C6FF37F90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F469DEA229CD68F700F63183 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF7836A29E56BE20044E177 /* UserInteractionViewController.swift in Sources */,
 				F469DEAE29CD68F700F63183 /* ViewController.swift in Sources */,
 				F4CB050329D172840032CD0F /* UserInteractionViewModel.swift in Sources */,
 				F469DEAA29CD68F700F63183 /* AppDelegate.swift in Sources */,
@@ -342,6 +418,7 @@
 		};
 		F469DEBB29CD690000F63183 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01916FC2E90AE4661AEFE082 /* Pods-StonePaperScissor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -351,7 +428,7 @@
 				DEVELOPMENT_TEAM = 7DS2M392U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StonePaperScissor/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = StonePaperScissor;
+				INFOPLIST_KEY_CFBundleDisplayName = StonePaperScissorsFun;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -364,7 +441,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sreedhar.StonePaperScissor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sreedhar.StonePaperScissorsFun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -375,6 +452,7 @@
 		};
 		F469DEBC29CD690000F63183 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8429E009F7F2EE5ECE1C90F9 /* Pods-StonePaperScissor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -384,7 +462,7 @@
 				DEVELOPMENT_TEAM = 7DS2M392U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StonePaperScissor/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = StonePaperScissor;
+				INFOPLIST_KEY_CFBundleDisplayName = StonePaperScissorsFun;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -397,7 +475,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sreedhar.StonePaperScissor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sreedhar.StonePaperScissorsFun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

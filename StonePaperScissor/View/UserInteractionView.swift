@@ -38,9 +38,9 @@ struct UserInteractionView: View {
                                     }) {
                                         Image(systemName:self.userInteractionViewModel.backgroundMusicIsEnabled ? "speaker" : "speaker.slash").resizable()
                                             .frame(width: 40,height: 40)
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.red)
                                     }
-                                    Text("Music").bold().foregroundColor(.black)
+                                    Text("Music").bold().foregroundColor(.red)
                                 }.padding(.trailing, 20)
                             }
                             
@@ -121,7 +121,7 @@ struct UserInteractionView: View {
                     
 
             }.padding(.all, 0)
-                //.background(Color.black)
+                .background(Color.black)
                     if (userInteractionViewModel.showAlert) && (userInteractionViewModel.whosePoint != "") {
                         Form {
                             VStack(alignment: .center) {
