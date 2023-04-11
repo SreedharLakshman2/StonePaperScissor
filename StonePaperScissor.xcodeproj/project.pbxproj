@@ -43,6 +43,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FF7836329E563B40044E177 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F4EED3A729D5664F00FC7444 /* small-miracle.mp3 */,
+				F469DEB229CD690000F63183 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		1FF7836429E563D90044E177 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				F469DEAF29CD68F700F63183 /* Main.storyboard */,
+				F469DEB429CD690000F63183 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		1FF7836529E563F90044E177 /* AppDelegateFile */ = {
+			isa = PBXGroup;
+			children = (
+				F469DEA929CD68F700F63183 /* AppDelegate.swift */,
+				F469DEAB29CD68F700F63183 /* SceneDelegate.swift */,
+			);
+			path = AppDelegateFile;
+			sourceTree = "<group>";
+		};
+		1FF7836629E564360044E177 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FF7836729E5643F0044E177 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F469DEAD29CD68F700F63183 /* ViewController.swift */,
+				F4CB050029D16F4F0032CD0F /* UserInteractionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FF7836829E564510044E177 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4CB050229D172840032CD0F /* UserInteractionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F469DE9D29CD68F700F63183 = {
 			isa = PBXGroup;
 			children = (
@@ -63,15 +114,12 @@
 			isa = PBXGroup;
 			children = (
 				F469DEB729CD690000F63183 /* Info.plist */,
-				F4EED3A729D5664F00FC7444 /* small-miracle.mp3 */,
-				F469DEA929CD68F700F63183 /* AppDelegate.swift */,
-				F469DEAB29CD68F700F63183 /* SceneDelegate.swift */,
-				F469DEAD29CD68F700F63183 /* ViewController.swift */,
-				F4CB050029D16F4F0032CD0F /* UserInteractionView.swift */,
-				F4CB050229D172840032CD0F /* UserInteractionViewModel.swift */,
-				F469DEAF29CD68F700F63183 /* Main.storyboard */,
-				F469DEB229CD690000F63183 /* Assets.xcassets */,
-				F469DEB429CD690000F63183 /* LaunchScreen.storyboard */,
+				1FF7836629E564360044E177 /* Model */,
+				1FF7836729E5643F0044E177 /* View */,
+				1FF7836829E564510044E177 /* ViewModel */,
+				1FF7836529E563F90044E177 /* AppDelegateFile */,
+				1FF7836429E563D90044E177 /* StoryBoards */,
+				1FF7836329E563B40044E177 /* SupportingFiles */,
 			);
 			path = StonePaperScissor;
 			sourceTree = "<group>";
@@ -303,6 +351,8 @@
 				DEVELOPMENT_TEAM = 7DS2M392U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StonePaperScissor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StonePaperScissor;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -334,6 +384,8 @@
 				DEVELOPMENT_TEAM = 7DS2M392U2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StonePaperScissor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StonePaperScissor;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
