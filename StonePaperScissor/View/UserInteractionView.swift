@@ -193,7 +193,7 @@ struct UserInteractionView: View {
                         }.padding(.all,0)
                             .background(.white)
                         //MARK: - Final view
-                        if (userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint) {
+                        if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint) && userInteractionViewModel.showWinnerView) {
                             VStack(alignment: .center, spacing: 15) {
                                 Spacer().frame(height: nil)
                                 Image("Winner").resizable()
@@ -220,8 +220,9 @@ struct UserInteractionView: View {
                                     userInteractionViewModel.userSelectedItem = ""
                                     userInteractionViewModel.userSelectedElementInfoToShowShadow = ""
                                     userInteractionViewModel.appAISelectedElementInfoToShowShadow = ""
+                                    userInteractionViewModel.showWinnerView = false
                                 }) {
-                                    Text("  Close  ")
+                                    Text("  CLOSE  ")
                                         .font(.system(size: 25))
                                         .bold()
                                         .foregroundColor(Color.white)
@@ -319,6 +320,9 @@ struct UserInteractionView: View {
     
     func refresh() {
         if (userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+                userInteractionViewModel.showWinnerView = true
+            }
             return
         }
         else {
