@@ -27,12 +27,12 @@ struct UserInteractionView: View {
                 VStack {
                     //MARK: - SettingsView
                     VStack(alignment: .center) {
-                        Spacer().frame(height: 40)
+                        Spacer().frame(height: 60)
                         //MARK: - Speaker and change colour action
                         
                         VStack {
-                            HStack {
-                                Spacer()
+                        HStack {
+                            Spacer()
                                 Button(action: {
                                     userInteractionViewModel.updatedColour = colourArray.randomElement() ?? UIColor.black.cgColor
                                 }){
@@ -44,10 +44,6 @@ struct UserInteractionView: View {
                                         .cornerRadius(5.0)
                                 }
                                 Spacer()
-                            }.padding(.all, 10)
-                        
-                        HStack {
-                            Spacer()
                                 VStack(spacing: 5) {
                                      Button(action: {
                                         self.userInteractionViewModel.backgroundMusicIsEnabled.toggle()
@@ -198,15 +194,18 @@ struct UserInteractionView: View {
                             .background(.white)
                         //MARK: - Final view
                         if (userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint) {
-                            VStack(spacing: 10) {
+                            VStack(alignment: .center, spacing: 15) {
                                 Spacer().frame(height: nil)
+                                Image("Winner").resizable()
+                                    .frame(width: 150, height:  150)
                                 HStack {
                                     Spacer()
                                     Text("\(userInteractionViewModel.userPoint == 5 ? "  Congratulations you won!  " : "  AI Won!  ")")
-                                        .font(.system(size: 20))
+                                        .font(.system(size: 30))
                                         .bold()
                                         .foregroundColor(Color.white)
                                         .background(.cyan)
+                                        .cornerRadius(5)
                                     Spacer()
                                 }.padding(.all, 0)
                                 Button(action: {
@@ -222,11 +221,12 @@ struct UserInteractionView: View {
                                     userInteractionViewModel.userSelectedElementInfoToShowShadow = ""
                                     userInteractionViewModel.appAISelectedElementInfoToShowShadow = ""
                                 }) {
-                                    Text(" Close ")
-                                        .font(.system(size: 20))
+                                    Text("  Close  ")
+                                        .font(.system(size: 25))
                                         .bold()
                                         .foregroundColor(Color.white)
-                                        .background(.cyan)
+                                        .background(.red)
+                                        .cornerRadius(5)
                                 }
                                 Spacer().frame(height: nil)
                             }.padding(.all, 0)
