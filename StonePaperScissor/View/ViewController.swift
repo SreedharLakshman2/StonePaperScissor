@@ -16,16 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var playWithOutSignIn: UIButton!
     
     override func loadView() {
-        if UserDefaults.standard.bool(forKey: "isSignInCompleted") {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
-            self.navigationController?.pushViewController(userInteractionViewController, animated: true)
-        }
+    
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if UserDefaults.standard.bool(forKey: "isSignInCompleted") {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
+            self.navigationController?.pushViewController(userInteractionViewController, animated: true)
+        }
     }
     
     @IBAction func signInWithGoogleButtonAction(_ sender: UIButton) {
