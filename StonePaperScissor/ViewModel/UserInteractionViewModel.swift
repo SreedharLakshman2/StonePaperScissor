@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import UIKit
 
 class UserInteractionViewModel: ObservableObject {
     
@@ -23,6 +25,8 @@ class UserInteractionViewModel: ObservableObject {
     @Published var isPlayerEnteredName: Bool = false
     @Published var playerName: String = ""
     @Published var backgroundMusicIsEnabled: Bool = true
+    @Published var changeViewColour:Bool = false
+    @Published var updatedColour: CGColor = UIColor.black.cgColor
     
     
 }

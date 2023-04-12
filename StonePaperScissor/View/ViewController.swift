@@ -14,11 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInWithGoogleButtonOutlet: UIButton!
     @IBOutlet weak var signInWithAppleAccountButtonOutlet: UIButton!
     @IBOutlet weak var playWithOutSignIn: UIButton!
-    
-    override func loadView() {
-    
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,7 +39,6 @@ class ViewController: UIViewController {
                     UserDefaults.standard.set(signInResult.user.profile?.givenName, forKey: "GoogleUserName") //setObject
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
-                    userInteractionViewController.googleLoggedInUserInfo = GoogleLoggedInUserInfo(name: signInResult.user.profile?.name, email: signInResult.user.profile?.email, image: signInResult.user.profile?.imageURL(withDimension: 300))
                     self.navigationController?.pushViewController(userInteractionViewController, animated: true)
                 }
             }
@@ -66,23 +61,5 @@ class ViewController: UIViewController {
     @IBAction func signOut(sender: Any) {
         GIDSignIn.sharedInstance.signOut()
     }
-    
-    
-    //    UserDefaults.standard.set(true, forKey: "Key") //Bool
-    //    UserDefaults.standard.set(1, forKey: "Key")  //Integer
-    //    UserDefaults.standard.set("TEST", forKey: "Key") //setObject
-    //    Retrieve
-    //
-    //     UserDefaults.standard.bool(forKey: "Key")
-    //     UserDefaults.standard.integer(forKey: "Key")
-    //     UserDefaults.standard.string(forKey: "Key")
-    //    Remove
-    //
-    //     UserDefaults.standard.removeObject(forKey: "Key")
-    //    Remove all Keys
-    //
-    //     if let appDomain = Bundle.main.bundleIdentifier {
-    //    UserDefaults.standard.removePersistentDomain(forName: appDomain)
-    //     }
 }
 

@@ -14,15 +14,26 @@ struct UserInteractionView: View {
     @ObservedObject var userInteractionViewModel = UserInteractionViewModel()
     @State var name: String = "User"
     @State var profileImageURL: URL = URL(fileURLWithPath: "")
+    @State var colourArray: [CGColor] = [UIColor.white.cgColor, UIColor.red.cgColor, UIColor.black.cgColor, UIColor.yellow.cgColor, UIColor.systemBlue.cgColor]
        
     var body: some View {
         ZStack {
             VStack {
-                // UserView
+                //MARK: - SettingsView
                     VStack(alignment: .center) {
-                        VStack(spacing: 10) {
+                        VStack {
                             //Speaker View
                             HStack {
+                                Button(action: {
+                                    userInteractionViewModel.updatedColour = colourArray.randomElement() ?? UIColor.black.cgColor
+                                }){
+                                    Text("  Change View Colour  ")
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .background(Color.cyan)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(5.0)
+                                }
                                 Spacer()
                                 VStack(spacing: 5) {
                                     Button(action: {
@@ -36,33 +47,15 @@ struct UserInteractionView: View {
                                     }) {
                                         Image(systemName:self.userInteractionViewModel.backgroundMusicIsEnabled ? "speaker" : "speaker.slash").resizable()
                                             .frame(width: 40,height: 40)
-                                            .foregroundColor(.red)
+                                            .foregroundColor(.cyan)
                                     }
-                                    Text("Music").bold().foregroundColor(.red)
+                                    Text("Music").bold().foregroundColor(.cyan)
                                 }.padding(.trailing, 20)
-                            }
+                            }.padding(.all, 10)
                             
-                            //User Point view
-                            VStack(alignment: .center){
-                                Spacer()
-                                VStack {
-                                    Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "User")'s Points: \(userInteractionViewModel.userPoint)  ")
-                                        .font(.system(size: 25))
-                                        .bold()
-                                        .background(Color.cyan)
-                                        .foregroundColor(Color.white)
-                                        .cornerRadius(5.0)
-                                    Text("  AI Points: \(userInteractionViewModel.appAIPoint)  ")
-                                        .font(.system(size: 25))
-                                        .bold()
-                                        .background(Color.cyan)
-                                        .foregroundColor(Color.white)
-                                        .cornerRadius(5.0)
-                                }
-                                Spacer()
-                            }
                         }.padding(.all,10)
                         Spacer()
+                        //MARK: - Choose the move view
                         VStack(spacing: 10) {
                             HStack(alignment: .center, spacing: 20){
                                 Text("  Choose your move  ")
@@ -80,8 +73,6 @@ struct UserInteractionView: View {
                                     .resizable()
                                     .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Stone" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
                                     .frame(width: 100, height: 100)
-                                    //.clipShape(Circle())
-                                    //.background(Color.black)
                                     .onTapGesture{
                                         userTapOnElement(senderId: "Stone")
                                         refresh()
@@ -113,52 +104,76 @@ struct UserInteractionView: View {
                             
                         }
                         Spacer()
-                    }//.background(Color.black)
+                        
+                        //MARK: - User Point view
+                        VStack(alignment: .center) {
+                            VStack {
+                                Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "User")'s Points: \(userInteractionViewModel.userPoint)  ")
+                                    .font(.system(size: 25))
+                                    .bold()
+                                    .background(Color.cyan)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(5.0)
+                                    .padding()
+                                Text("  AI Points: \(userInteractionViewModel.appAIPoint)  ")
+                                    .font(.system(size: 25))
+                                    .bold()
+                                    .background(Color.cyan)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(5.0)
+                            }
+                        }
+                    }
                     .padding(.all, 10)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                    
 
             }.padding(.all, 0)
-                .background(Color.black)
+                .background(Color(cgColor: userInteractionViewModel.updatedColour))
                     if (userInteractionViewModel.showAlert) && (userInteractionViewModel.whosePoint != "") {
-                        Form {
+                        VStack {
+                            Spacer().frame(height: nil)
                             VStack(alignment: .center) {
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
                                 HStack(alignment: .center) {
+                                    Spacer()
                                     VStack {
                                         Image(userInteractionViewModel.randomlyAISelectedItem).resizable()
                                             .frame(width: 50,height: 100)
                                         Text("AI's Choice")
-                                            .foregroundColor(.black)
                                             .font(.system(size: 20))
+                                            .bold()
+                                            .background(Color.cyan)
+                                            .foregroundColor(Color.white)
+                                            .cornerRadius(5.0)
                                     }
                                     Spacer().foregroundColor(Color.white)
                                     Text(userInteractionViewModel.whosePoint == "Tie" ? "Tie" : userInteractionViewModel.whosePoint == "User" ? "You got +1 point" : "AI got +1 point")
+                                        .font(.system(size: 20))
                                         .bold()
-                                        .foregroundColor(userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red)
+                                        .background(Color.cyan)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(5.0)
                                     Spacer()
                                     VStack {
                                         Image(userInteractionViewModel.userSelectedItem).resizable()
                                             .frame(width: 50,height: 100)
                                         Text("Your's Choice")
-                                            .foregroundColor(.black)
                                             .font(.system(size: 20))
+                                            .bold()
+                                            .background(Color.cyan)
+                                            .foregroundColor(Color.white)
+                                            .cornerRadius(5.0)
                                     }
                                     Spacer()
                                 }.padding(.all, 10)
-                                .background(Color.white)
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-
-                            }.padding(.all, 0)
-                            .listRowBackground(userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red)
-                            .cornerRadius(15)
+                                .background((userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red))
+                                .padding([.trailing, .leading], 15)
+                                    .cornerRadius(10)
+                            }.padding([.trailing, .leading], 15)
+                                .cornerRadius(10)
+                                .background(.white)
+                            Spacer().frame(height: nil)
                         }.padding(.all,0)
+                        .background(.white)
                     }
         }
         .onAppear{
