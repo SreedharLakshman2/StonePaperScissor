@@ -25,18 +25,28 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-cb-t4N">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="535"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SPS" translatesAutoresizingMaskIntoConstraints="NO" id="67f-db-4Tc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="535"/>
+                                                    </imageView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="67f-db-4Tc" firstAttribute="leading" secondItem="jaF-cb-t4N" secondAttribute="leading" id="4ar-gG-6sD"/>
+                                                    <constraint firstItem="67f-db-4Tc" firstAttribute="top" secondItem="jaF-cb-t4N" secondAttribute="top" id="6vc-TY-atW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="67f-db-4Tc" secondAttribute="trailing" id="M89-0k-HpI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="67f-db-4Tc" secondAttribute="bottom" id="cVS-Is-xth"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="eSK-Gw-nZt"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5R-vm-z7R">
                                                 <rect key="frame" x="0.0" y="545" width="373" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="E4W-J4-ONQ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="  SignIn with apple" image="apple.logo" catalog="system"/>
                                                 <connections>
@@ -45,11 +55,12 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr1-iD-but">
                                                 <rect key="frame" x="0.0" y="605" width="373" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="M4G-dW-nI5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="  SignIn with google" image="globe" catalog="system"/>
                                                 <connections>
@@ -58,11 +69,12 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDE-pu-2oB">
                                                 <rect key="frame" x="0.0" y="665" width="373" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="hLE-C9-8JY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="  Play without signIn" image="play" catalog="system"/>
                                                 <connections>
@@ -108,6 +120,7 @@
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="snI-po-NyF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bQS-gK-1EO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -135,14 +148,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SPS" width="512" height="512"/>
         <image name="apple.logo" catalog="system" width="105" height="128"/>
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="play" catalog="system" width="117" height="128"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
