@@ -51,9 +51,9 @@ class ViewController: UIViewController {
     
     @IBAction func playWithoutLoginButtonAction(_ sender: Any) {
         //UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
-        let storyBoard : UIStoryboard = UIStoryboard(name: "UserInteraction", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
-        self.present(nextViewController, animated:true, completion:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
+        self.navigationController?.pushViewController(userInteractionViewController, animated: true)
 
     }
     

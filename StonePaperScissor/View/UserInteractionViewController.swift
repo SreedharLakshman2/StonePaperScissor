@@ -15,9 +15,9 @@ class UserInteractionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if UserDefaults.standard.bool(forKey: "isSignInCompleted") {
+        //if UserDefaults.standard.bool(forKey: "isSignInCompleted") {
             self.navigationItem.setHidesBackButton(true, animated: true)
-        }
+        //}
         addDragableImageView()
     }
 

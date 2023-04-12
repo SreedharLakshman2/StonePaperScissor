@@ -105,10 +105,9 @@
         <scene sceneID="lRP-mW-WQD">
             <objects>
                 <viewController storyboardIdentifier="UserInteractionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xz7-LS-wfk" customClass="UserInteractionViewController" customModule="StonePaperScissor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="snI-po-NyF">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="snI-po-NyF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Ae0-c3-3jU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
