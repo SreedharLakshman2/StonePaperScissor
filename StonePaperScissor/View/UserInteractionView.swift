@@ -12,10 +12,8 @@ import Foundation
 struct UserInteractionView: View {
     
     @ObservedObject var userInteractionViewModel = UserInteractionViewModel()
-    
-    init(){
-           UITableView.appearance().backgroundColor = .black
-       }
+    @State var name: String = "User"
+    @State var profileImageURL: URL = URL(fileURLWithPath: "")
        
     var body: some View {
         ZStack {
@@ -45,10 +43,10 @@ struct UserInteractionView: View {
                             }
                             
                             //User Point view
-                            HStack(alignment: .center){
+                            VStack(alignment: .center){
                                 Spacer()
-                                HStack {
-                                    Text("  User Points: \(userInteractionViewModel.userPoint)  ")
+                                VStack {
+                                    Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "User")'s Points: \(userInteractionViewModel.userPoint)  ")
                                         .font(.system(size: 25))
                                         .bold()
                                         .background(Color.cyan)

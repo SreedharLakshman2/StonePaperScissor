@@ -15,37 +15,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInWithAppleAccountButtonOutlet: UIButton!
     @IBOutlet weak var playWithOutSignIn: UIButton!
     
+    override func loadView() {
+        if UserDefaults.standard.bool(forKey: "isSignInCompleted") {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
+            self.navigationController?.pushViewController(userInteractionViewController, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
     }
     
     @IBAction func signInWithGoogleButtonAction(_ sender: UIButton) {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
             }
             else {
                 // If sign in succeeded, display the app's main content View.
-                print("Signin Success")
-                GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-                    guard error == nil else { return }
-                    guard let signInResult = signInResult else { return }
+                if let signInResult = signInResult {
+                    print("Signin Success")
                     UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
                     UserDefaults.standard.set(true, forKey: "isSignInCompletedWithGoogleAccount") //Bool
-                    let user = signInResult.user
-                    let emailAddress = user.profile?.email
-                    let fullName = user.profile?.name
-                    let givenName = user.profile?.givenName
-                    let familyName = user.profile?.familyName
-                    let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-                    let storyBoard : UIStoryboard = UIStoryboard(name: "UserInteraction", bundle:nil)
-                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
-                    self.present(nextViewController, animated:true, completion:nil)
+                    UserDefaults.standard.set(signInResult.user.profile?.givenName, forKey: "GoogleUserName") //setObject
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
+                    userInteractionViewController.googleLoggedInUserInfo = GoogleLoggedInUserInfo(name: signInResult.user.profile?.name, email: signInResult.user.profile?.email, image: signInResult.user.profile?.imageURL(withDimension: 300))
+                    self.navigationController?.pushViewController(userInteractionViewController, animated: true)
                 }
             }
-            
         }
       }
     
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playWithoutLoginButtonAction(_ sender: Any) {
-        UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
+        //UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
         let storyBoard : UIStoryboard = UIStoryboard(name: "UserInteraction", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
         self.present(nextViewController, animated:true, completion:nil)

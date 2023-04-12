@@ -11,20 +11,19 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-//        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-//            if error != nil || user == nil {
-//              // Show the app's signed-out state.
-//                window.rootViewController = ViewController()
-//            } else {
-//              // Show the app's signed-in state.
-//              window.rootViewController = UserInteractionViewController()
-//            }
-//          }
+        //        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+        //            if error != nil || user == nil {
+        //              // Show the app's signed-out state.
+        //                window.rootViewController = ViewController()
+        //            } else {
+        //              // Show the app's signed-in state.
+        //              window.rootViewController = UserInteractionViewController()
+        //            }
+        //          }
         
         return true
     }
