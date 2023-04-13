@@ -8,7 +8,6 @@
 import SwiftUI
 import AVFoundation
 import Foundation
-import GoogleMobileAds
 
 extension View {
     public func gradientForeground(colors: [Color]) -> some View {

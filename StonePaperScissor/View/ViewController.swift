@@ -11,69 +11,75 @@ import GoogleSignIn
 import AuthenticationServices
 import GoogleMobileAds
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GADBannerViewDelegate {
     
     @IBOutlet weak var signInWithGoogleButtonOutlet: UIButton!
     @IBOutlet weak var signInWithAppleAccountButtonOutlet: UIButton!
     @IBOutlet weak var playWithOutSignIn: UIButton!
     
-    private var interstitial: GADInterstitialAd?
+    var bannerView: GADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        // In this case, we instantiate the banner with desired ad size.
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-9471606055191983/3229282428"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
         if UserDefaults.standard.bool(forKey: "isSignInCompleted") && UserDefaults.standard.bool(forKey: "isSignInCompletedWithAppleAccount") {
             
             
             if let userIdentifier = UserDefaults.standard.object(forKey: "appleUserIdentifier") as? String {
-                              let authorizationProvider = ASAuthorizationAppleIDProvider()
-                              authorizationProvider.getCredentialState(forUserID: userIdentifier) { (state, error) in
-                                  switch (state) {
-                                  case .authorized:
-                                      print("Account Found - Signed In")
-                                      DispatchQueue.main.async {
-                                          self.navigateTOUserInteractionView()
-                                      }
-                                      break
-                                  case .revoked:
-                                      print("No Account Found")
-                                      DispatchQueue.main.async {
-                                          UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
-                                          UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
-                                          UserDefaults.standard.set("", forKey: "appleUserIdentifier")
-                                          UserDefaults.standard.set("", forKey: "AppleUserName") //setObject
-                                          // create the alert
-                                                  let alert = UIAlertController(title: "Alert", message: "Apple Account revoked/SignedOut.", preferredStyle: UIAlertController.Style.alert)
-
-                                                  // add an action (button)
-                                                  alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                                                  // show the alert
-                                                  self.present(alert, animated: true, completion: nil)
-                                      }
-                                      fallthrough
-                                  case .notFound:
-                                       print("No Account Found")
-                                       DispatchQueue.main.async {
-                                           UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
-                                           UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
-                                           UserDefaults.standard.set("", forKey: "appleUserIdentifier")
-                                           UserDefaults.standard.set("", forKey: "AppleUserName") //setObject
-                                           // create the alert
-                                                   let alert = UIAlertController(title: "Alert", message: "Apple Account not found.", preferredStyle: UIAlertController.Style.alert)
-
-                                                   // add an action (button)
-                                                   alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                                                   // show the alert
-                                                   self.present(alert, animated: true, completion: nil)
-                                       }
-                                  default:
-                                      break
-                                  }
-                              }
-                       }
+                let authorizationProvider = ASAuthorizationAppleIDProvider()
+                authorizationProvider.getCredentialState(forUserID: userIdentifier) { (state, error) in
+                    switch (state) {
+                    case .authorized:
+                        print("Account Found - Signed In")
+                        DispatchQueue.main.async {
+                            self.navigateTOUserInteractionView()
+                        }
+                        break
+                    case .revoked:
+                        print("No Account Found")
+                        DispatchQueue.main.async {
+                            UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
+                            UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
+                            UserDefaults.standard.set("", forKey: "appleUserIdentifier")
+                            UserDefaults.standard.set("", forKey: "AppleUserName") //setObject
+                            // create the alert
+                            let alert = UIAlertController(title: "Alert", message: "Apple Account revoked/SignedOut.", preferredStyle: UIAlertController.Style.alert)
+                            
+                            // add an action (button)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                            
+                            // show the alert
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        fallthrough
+                    case .notFound:
+                        print("No Account Found")
+                        DispatchQueue.main.async {
+                            UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
+                            UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
+                            UserDefaults.standard.set("", forKey: "appleUserIdentifier")
+                            UserDefaults.standard.set("", forKey: "AppleUserName") //setObject
+                            // create the alert
+                            let alert = UIAlertController(title: "Alert", message: "Apple Account not found.", preferredStyle: UIAlertController.Style.alert)
+                            
+                            // add an action (button)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                            
+                            // show the alert
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    default:
+                        break
+                    }
+                }
+            }
             
             
         }
@@ -89,13 +95,13 @@ class ViewController: UIViewController {
                         UserDefaults.standard.set("", forKey: "GoogleUserName") //Bool
                         
                         // create the alert
-                                let alert = UIAlertController(title: "Alert", message: "Google Account info not found, Please login again.", preferredStyle: UIAlertController.Style.alert)
-
-                                // add an action (button)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                                // show the alert
-                                self.present(alert, animated: true, completion: nil)
+                        let alert = UIAlertController(title: "Alert", message: "Google Account info not found, Please login again.", preferredStyle: UIAlertController.Style.alert)
+                        
+                        // add an action (button)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        
+                        // show the alert
+                        self.present(alert, animated: true, completion: nil)
                     }
                 } else {
                     // Show the app's signed-in state.
@@ -107,24 +113,27 @@ class ViewController: UIViewController {
             return
         }
         
-        // Setuping Ad
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910",
-                               request: request,
-                               completionHandler: { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        )
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .top,
+                              relatedBy: .equal,
+                              toItem: view.safeAreaLayoutGuide,
+                              attribute: .top,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: view,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
     
     @IBAction func signInWithGoogleButtonAction(_ sender: UIButton) {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
@@ -154,12 +163,32 @@ class ViewController: UIViewController {
     }
     //added Interstitial Ad
     @IBAction func playWithoutLoginButtonAction(_ sender: Any) {
-        if interstitial != nil {
-            interstitial?.present(fromRootViewController: self)
-          } else {
-            print("Ad wasn't ready")
-          }
         navigateTOUserInteractionView()
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("bannerViewDidReceiveAd")
+        addBannerViewToView(bannerView)
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewDidDismissScreen")
     }
 }
 
@@ -199,20 +228,4 @@ extension ViewController: ASAuthorizationControllerPresentationContextProviding 
     }
 }
 
-extension ViewController: GADFullScreenContentDelegate {
-    /// Tells the delegate that the ad failed to present full screen content.
-      func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-      }
 
-      /// Tells the delegate that the ad will present full screen content.
-      func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-      }
-
-      /// Tells the delegate that the ad dismissed full screen content.
-      func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-      }
-    
-}

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import GoogleSignIn
+import UIKit
 
 struct InfoView: View {
     
@@ -92,5 +93,3 @@ struct InfoView_Previews: PreviewProvider {
         InfoView()
     }
 }
-
-

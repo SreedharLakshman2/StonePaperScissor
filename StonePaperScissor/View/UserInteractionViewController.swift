@@ -11,10 +11,8 @@ import AuthenticationServices
 
 class UserInteractionViewController: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         self.navigationItem.setHidesBackButton(true, animated: true)
         addDragableImageView()
@@ -28,6 +26,4 @@ class UserInteractionViewController: UIViewController {
             self.view.backgroundColor = .black
             childView.didMove(toParent: self)
     }
-    
-
 }

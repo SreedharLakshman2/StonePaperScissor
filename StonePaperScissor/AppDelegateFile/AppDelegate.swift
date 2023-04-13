@@ -9,7 +9,7 @@ import UIKit
 import GoogleSignIn
 import FirebaseCore
 import GoogleMobileAds
-//AdUnitID = ca-app-pub-9471606055191983/8381574749
+//AdUnitID = ca-app-pub-9471606055191983/3229282428
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
