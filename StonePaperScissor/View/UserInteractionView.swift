@@ -8,6 +8,8 @@
 import SwiftUI
 import AVFoundation
 import Foundation
+import GoogleMobileAds
+
 extension View {
     public func gradientForeground(colors: [Color]) -> some View {
         self.overlay(
@@ -25,6 +27,7 @@ struct UserInteractionView: View {
     @State var name: String = "User"
     @State var profileImageURL: URL = URL(fileURLWithPath: "")
     @State var colourArray: [CGColor] = [UIColor.white.cgColor, UIColor.red.cgColor, UIColor.black.cgColor, UIColor.yellow.cgColor]
+    
     init() {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()

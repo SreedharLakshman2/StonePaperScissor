@@ -8,4 +8,5 @@ target 'StonePaperScissor' do
   # Pods for StonePaperScissor
 pod 'GoogleSignIn'
 pod 'GoogleSignInSwiftSupport'
+pod 'Google-Mobile-Ads-SDK'
 end

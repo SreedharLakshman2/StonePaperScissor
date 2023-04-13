@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import GoogleSignIn
 import AuthenticationServices
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInWithAppleAccountButtonOutlet: UIButton!
     @IBOutlet weak var playWithOutSignIn: UIButton!
     
+    private var interstitial: GADInterstitialAd?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -103,6 +106,24 @@ class ViewController: UIViewController {
         else {
             return
         }
+        
+        // Setuping Ad
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     @IBAction func signInWithGoogleButtonAction(_ sender: UIButton) {
@@ -131,10 +152,14 @@ class ViewController: UIViewController {
         controller.presentationContextProvider = self
         controller.performRequests()
     }
-    
+    //added Interstitial Ad
     @IBAction func playWithoutLoginButtonAction(_ sender: Any) {
+        if interstitial != nil {
+            interstitial?.present(fromRootViewController: self)
+          } else {
+            print("Ad wasn't ready")
+          }
         navigateTOUserInteractionView()
-        
     }
 }
 
@@ -172,4 +197,22 @@ extension ViewController: ASAuthorizationControllerPresentationContextProviding 
         let userInteractionViewController = storyBoard.instantiateViewController(withIdentifier: "UserInteractionViewController") as! UserInteractionViewController
         self.navigationController?.pushViewController(userInteractionViewController, animated: true)
     }
+}
+
+extension ViewController: GADFullScreenContentDelegate {
+    /// Tells the delegate that the ad failed to present full screen content.
+      func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+      }
+
+      /// Tells the delegate that the ad will present full screen content.
+      func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+      }
+
+      /// Tells the delegate that the ad dismissed full screen content.
+      func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+      }
+    
 }
