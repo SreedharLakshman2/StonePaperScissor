@@ -27,7 +27,7 @@ class UserInteractionViewModel: ObservableObject {
     @Published var backgroundMusicIsEnabled: Bool = true
     @Published var changeViewColour:Bool = false
     @Published var updatedColour: CGColor = UIColor.black.cgColor
-    @Published var gamePoint: Int = 2
+    @Published var gamePoint: Int = 3
     @Published var showWinnerView: Bool = false
     
     

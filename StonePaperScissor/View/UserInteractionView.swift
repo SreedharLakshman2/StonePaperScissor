@@ -123,7 +123,7 @@ struct UserInteractionView: View {
                         //MARK: - User Point view
                         VStack(alignment: .center) {
                             VStack {
-                                Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "User")'s Points: \(userInteractionViewModel.userPoint)  ")
+                                Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "Your")'s Points: \(userInteractionViewModel.userPoint)  ")
                                     .font(.system(size: 25))
                                     .bold()
                                     .background(Color.cyan)
@@ -150,7 +150,7 @@ struct UserInteractionView: View {
                         VStack {
                             Spacer().frame(height: nil)
                             VStack(alignment: .center) {
-                                Text("  Game Points: Best of 5  ")
+                                Text("  Game Points: Best of \(userInteractionViewModel.gamePoint)  ")
                                     .font(.system(size: 25))
                                     .bold()
                                     .background(Color.cyan)
@@ -193,14 +193,14 @@ struct UserInteractionView: View {
                         }.padding(.all,0)
                             .background(.white)
                         //MARK: - Final view
-                        if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint) && userInteractionViewModel.showWinnerView) {
+                        if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint)) && (userInteractionViewModel.showWinnerView) {
                             VStack(alignment: .center, spacing: 15) {
                                 Spacer().frame(height: nil)
                                 Image("Winner").resizable()
                                     .frame(width: 150, height:  150)
                                 HStack {
                                     Spacer()
-                                    Text("\(userInteractionViewModel.userPoint == 5 ? "  Congratulations you won!  " : "  AI Won!  ")")
+                                    Text("\(userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint ? "  Congratulations you won!  " : "  AI Won!  ")")
                                         .font(.system(size: 30))
                                         .bold()
                                         .foregroundColor(Color.white)
@@ -320,10 +320,9 @@ struct UserInteractionView: View {
     
     func refresh() {
         if (userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint) {
-            DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                 userInteractionViewModel.showWinnerView = true
             }
-            return
         }
         else {
             DispatchQueue.main.asyncAfter(deadline: .now()+3) {
