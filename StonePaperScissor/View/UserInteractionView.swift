@@ -29,6 +29,23 @@ struct UserInteractionView: View {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
     }
+    
+    
+     var userName: String {
+        var value: String = "Your"
+        if (UserDefaults.standard.bool(forKey: "isSignInCompletedWithGoogleAccount")) {
+            value = UserDefaults.standard.string(forKey: "GoogleUserName") ?? "Your"
+        }
+        else if (UserDefaults.standard.bool(forKey: "isSignInCompletedWithAppleAccount")) {
+            value = UserDefaults.standard.string(forKey: "AppleUserName") ?? "Your"
+        }
+        else {
+            value = "Your"
+        }
+        
+        return value
+    }
+    
     var body: some View {
         
         NavigationView {
@@ -127,7 +144,7 @@ struct UserInteractionView: View {
                         //MARK: - User Point view
                         VStack(alignment: .center) {
                             VStack {
-                                Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "Your")'s Points: \(userInteractionViewModel.userPoint)  ")
+                                Text(userName+"'s")
                                     .font(.system(size: 25))
                                     .bold()
                                     .gradientForeground(colors: [.indigo, .cyan])

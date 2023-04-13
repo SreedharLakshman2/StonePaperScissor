@@ -25,6 +25,7 @@
 		01916FC2E90AE4661AEFE082 /* Pods-StonePaperScissor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StonePaperScissor.debug.xcconfig"; path = "Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor.debug.xcconfig"; sourceTree = "<group>"; };
 		0690D5F13150E3456DCA28E2 /* Pods_StonePaperScissor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StonePaperScissor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FBC53EC29E7DDBA009B9BED /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		1FBC53EE29E7E800009B9BED /* StonePaperScissor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StonePaperScissor.entitlements; sourceTree = "<group>"; };
 		1FF7836929E56BE20044E177 /* UserInteractionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionViewController.swift; sourceTree = "<group>"; };
 		8429E009F7F2EE5ECE1C90F9 /* Pods-StonePaperScissor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StonePaperScissor.release.xcconfig"; path = "Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor.release.xcconfig"; sourceTree = "<group>"; };
 		F469DEA629CD68F700F63183 /* StonePaperScissor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StonePaperScissor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +144,7 @@
 		F469DEA829CD68F700F63183 /* StonePaperScissor */ = {
 			isa = PBXGroup;
 			children = (
+				1FBC53EE29E7E800009B9BED /* StonePaperScissor.entitlements */,
 				F469DEB729CD690000F63183 /* Info.plist */,
 				1FF7836629E564360044E177 /* Model */,
 				1FF7836729E5643F0044E177 /* View */,
@@ -422,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StonePaperScissor/StonePaperScissor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -456,6 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StonePaperScissor/StonePaperScissor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
