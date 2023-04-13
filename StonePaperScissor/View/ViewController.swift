@@ -39,6 +39,7 @@ class ViewController: UIViewController {
                                           UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
                                           UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
                                           UserDefaults.standard.set("", forKey: "appleUserIdentifier")
+                                          UserDefaults.standard.set("", forKey: "AppleUserName") //setObject
                                           // create the alert
                                                   let alert = UIAlertController(title: "Alert", message: "Apple Account revoked/SignedOut.", preferredStyle: UIAlertController.Style.alert)
 
@@ -55,6 +56,7 @@ class ViewController: UIViewController {
                                            UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
                                            UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
                                            UserDefaults.standard.set("", forKey: "appleUserIdentifier")
+                                           UserDefaults.standard.set("", forKey: "AppleUserName") //setObject
                                            // create the alert
                                                    let alert = UIAlertController(title: "Alert", message: "Apple Account not found.", preferredStyle: UIAlertController.Style.alert)
 
