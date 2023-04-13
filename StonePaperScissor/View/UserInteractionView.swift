@@ -144,7 +144,7 @@ struct UserInteractionView: View {
                         //MARK: - User Point view
                         VStack(alignment: .center) {
                             VStack {
-                                Text(userName+"'s")
+                                Text("\(userName)'s Points: \(userInteractionViewModel.userPoint) ")
                                     .font(.system(size: 25))
                                     .bold()
                                     .gradientForeground(colors: [.indigo, .cyan])

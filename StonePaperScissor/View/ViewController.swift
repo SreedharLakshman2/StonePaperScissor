@@ -36,8 +36,11 @@ class ViewController: UIViewController {
                                   case .revoked:
                                       print("No Account Found")
                                       DispatchQueue.main.async {
+                                          UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
+                                          UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
+                                          UserDefaults.standard.set("", forKey: "appleUserIdentifier")
                                           // create the alert
-                                                  let alert = UIAlertController(title: "Alert", message: "Apple Account revoked.", preferredStyle: UIAlertController.Style.alert)
+                                                  let alert = UIAlertController(title: "Alert", message: "Apple Account revoked/SignedOut.", preferredStyle: UIAlertController.Style.alert)
 
                                                   // add an action (button)
                                                   alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -49,6 +52,9 @@ class ViewController: UIViewController {
                                   case .notFound:
                                        print("No Account Found")
                                        DispatchQueue.main.async {
+                                           UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
+                                           UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount") //Bool
+                                           UserDefaults.standard.set("", forKey: "appleUserIdentifier")
                                            // create the alert
                                                    let alert = UIAlertController(title: "Alert", message: "Apple Account not found.", preferredStyle: UIAlertController.Style.alert)
 
@@ -73,8 +79,12 @@ class ViewController: UIViewController {
                 if error != nil || user == nil {
                     // Show the app's signed-out state.
                     DispatchQueue.main.async {
+                        UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
+                        UserDefaults.standard.set(false, forKey: "isSignInCompletedWithGoogleAccount") //Bool
+                        UserDefaults.standard.set("", forKey: "GoogleUserName") //Bool
+                        
                         // create the alert
-                                let alert = UIAlertController(title: "Alert", message: "Google Account info not found.", preferredStyle: UIAlertController.Style.alert)
+                                let alert = UIAlertController(title: "Alert", message: "Google Account info not found, Please login again.", preferredStyle: UIAlertController.Style.alert)
 
                                 // add an action (button)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -123,11 +133,6 @@ class ViewController: UIViewController {
     @IBAction func playWithoutLoginButtonAction(_ sender: Any) {
         navigateTOUserInteractionView()
         
-    }
-    
-    //SignOut
-    @IBAction func signOut(sender: Any) {
-        GIDSignIn.sharedInstance.signOut()
     }
 }
 
