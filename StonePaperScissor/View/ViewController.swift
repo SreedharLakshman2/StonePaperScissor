@@ -145,6 +145,7 @@ extension ViewController: ASAuthorizationControllerDelegate {
             UserDefaults.standard.set(true, forKey: "isSignInCompleted") //Bool
             UserDefaults.standard.set(true, forKey: "isSignInCompletedWithAppleAccount") //Bool
             UserDefaults.standard.set(appleIDCredential.fullName?.givenName, forKey: "AppleUserName") //setObject
+            print(UserDefaults.standard.string(forKey: "AppleUserName"),"AppleUserName")
             navigateTOUserInteractionView()
             break
         default:
