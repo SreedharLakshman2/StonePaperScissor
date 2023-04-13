@@ -78,7 +78,7 @@ struct InfoView: View {
                     .gradientForeground(colors: [.indigo, .cyan])
                     .onTapGesture {
                     self.presentationMode.wrappedValue.dismiss()
-                }.padding(.all, 10)
+                }.padding(.all, 20)
             }.padding(.all, 20)
                 .edgesIgnoringSafeArea(.top) //or .edgesIgnoringSafeArea(.all)
                 .navigationBarBackButtonHidden(true)

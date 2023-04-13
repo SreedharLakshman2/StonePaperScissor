@@ -10,6 +10,8 @@ import SwiftUI
 import GoogleSignIn
 import AuthenticationServices
 import GoogleMobileAds
+import AppTrackingTransparency
+import AdSupport
 
 class ViewController: UIViewController, GADBannerViewDelegate {
     
@@ -84,8 +86,6 @@ class ViewController: UIViewController, GADBannerViewDelegate {
             
         }
         else if UserDefaults.standard.bool(forKey: "isSignInCompleted") && UserDefaults.standard.bool(forKey: "isSignInCompletedWithGoogleAccount") {
-            
-            
             GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
                 if error != nil || user == nil {
                     // Show the app's signed-out state.
@@ -114,6 +114,13 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Task {
+            _ =  await ATT.permissionRequest()
+        }
+    }
+    
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
@@ -136,6 +143,9 @@ class ViewController: UIViewController, GADBannerViewDelegate {
        }
     
     @IBAction func signInWithGoogleButtonAction(_ sender: UIButton) {
+        signInWithAppleAccountButtonOutlet.isUserInteractionEnabled = false
+        playWithOutSignIn.isUserInteractionEnabled = false
+        
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
             if error != nil {
                 print(error?.localizedDescription as Any)
@@ -150,6 +160,8 @@ class ViewController: UIViewController, GADBannerViewDelegate {
                     self.navigateTOUserInteractionView()
                 }
             }
+            self.signInWithAppleAccountButtonOutlet.isUserInteractionEnabled = true
+            self.playWithOutSignIn.isUserInteractionEnabled = true
         }
     }
     
@@ -229,3 +241,20 @@ extension ViewController: ASAuthorizationControllerPresentationContextProviding 
 }
 
 
+struct ATT {
+    private init() {}
+   
+    static func permissionRequest() async -> Bool {
+        switch ATTrackingManager.trackingAuthorizationStatus {
+        case .notDetermined:
+            await ATTrackingManager.requestTrackingAuthorization()
+            return ATTrackingManager.trackingAuthorizationStatus == .authorized
+        case .restricted, .denied:
+            return false
+        case .authorized:
+            return true
+        @unknown default:
+            fatalError()
+        }
+    }
+}

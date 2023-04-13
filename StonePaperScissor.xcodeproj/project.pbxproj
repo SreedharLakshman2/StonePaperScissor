@@ -11,6 +11,7 @@
 		1FBC53F029E83224009B9BED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FBC53EF29E83224009B9BED /* GoogleService-Info.plist */; };
 		1FBC53F329E832D0009B9BED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FBC53F229E832D0009B9BED /* FirebaseAnalytics */; };
 		1FBC53F529E832D0009B9BED /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 1FBC53F429E832D0009B9BED /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		1FBC53F729E86C47009B9BED /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBC53F629E86C46009B9BED /* AppTrackingTransparency.framework */; };
 		1FF7836A29E56BE20044E177 /* UserInteractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7836929E56BE20044E177 /* UserInteractionViewController.swift */; };
 		F469DEAA29CD68F700F63183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469DEA929CD68F700F63183 /* AppDelegate.swift */; };
 		F469DEAC29CD68F700F63183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469DEAB29CD68F700F63183 /* SceneDelegate.swift */; };
@@ -30,6 +31,7 @@
 		1FBC53EC29E7DDBA009B9BED /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		1FBC53EE29E7E800009B9BED /* StonePaperScissor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StonePaperScissor.entitlements; sourceTree = "<group>"; };
 		1FBC53EF29E83224009B9BED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1FBC53F629E86C46009B9BED /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		1FF7836929E56BE20044E177 /* UserInteractionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionViewController.swift; sourceTree = "<group>"; };
 		8429E009F7F2EE5ECE1C90F9 /* Pods-StonePaperScissor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StonePaperScissor.release.xcconfig"; path = "Target Support Files/Pods-StonePaperScissor/Pods-StonePaperScissor.release.xcconfig"; sourceTree = "<group>"; };
 		F469DEA629CD68F700F63183 /* StonePaperScissor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StonePaperScissor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FBC53F329E832D0009B9BED /* FirebaseAnalytics in Frameworks */,
+				1FBC53F729E86C47009B9BED /* AppTrackingTransparency.framework in Frameworks */,
 				1FBC53F529E832D0009B9BED /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				FE6671EACFE879B291C62DC8 /* Pods_StonePaperScissor.framework in Frameworks */,
 			);
@@ -115,6 +118,7 @@
 		400C8DFE95611DDC6FAC5BEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FBC53F629E86C46009B9BED /* AppTrackingTransparency.framework */,
 				0690D5F13150E3456DCA28E2 /* Pods_StonePaperScissor.framework */,
 			);
 			name = Frameworks;

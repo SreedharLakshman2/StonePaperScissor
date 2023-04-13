@@ -157,6 +157,7 @@ struct UserInteractionView: View {
                                     .gradientForeground(colors: [.indigo, .cyan])
                             }
                         }
+                        Spacer().frame(height: 60)
                     }
                     .padding(.all, 0)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
