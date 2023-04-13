@@ -16,7 +16,7 @@ extension View {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing)
         )
-            .mask(self)
+        .mask(self)
     }
 }
 struct UserInteractionView: View {
@@ -24,7 +24,7 @@ struct UserInteractionView: View {
     @ObservedObject var userInteractionViewModel = UserInteractionViewModel()
     @State var name: String = "User"
     @State var profileImageURL: URL = URL(fileURLWithPath: "")
-    @State var colourArray: [CGColor] = [UIColor.white.cgColor, UIColor.red.cgColor, UIColor.black.cgColor, UIColor.yellow.cgColor, UIColor.systemBlue.cgColor]
+    @State var colourArray: [CGColor] = [UIColor.white.cgColor, UIColor.red.cgColor, UIColor.black.cgColor, UIColor.yellow.cgColor]
     init() {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -41,20 +41,23 @@ struct UserInteractionView: View {
                         //MARK: - Speaker and change colour action
                         
                         VStack {
-                        HStack {
-                            Spacer()
+                            HStack(spacing: 10) {
+                                NavigationLink(destination: InfoView()) {
+                                    Image(systemName: "info.square").resizable()
+                                        .frame(width: 30, height: 30, alignment: .center)
+                                        .foregroundColor(.indigo)
+                                        .padding(.all)
+                                }
                                 Button(action: {
                                     userInteractionViewModel.updatedColour = colourArray.randomElement() ?? UIColor.black.cgColor
                                 }){
-                                    Text("  Change View Colour  ")
-                                        .font(.system(size: 25))
+                                    Text(" Change View Colour ")
+                                        .font(.system(size: 15))
                                         .bold()
-                                        .background(.white)
-                                        .gradientForeground(colors: [.indigo, .cyan])
                                 }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
-                                Spacer()
-                                VStack(spacing: 5) {
-                                     Button(action: {
+                                    .padding(.all)
+                                VStack(spacing: 0) {
+                                    Button(action: {
                                         self.userInteractionViewModel.backgroundMusicIsEnabled.toggle()
                                         if userInteractionViewModel.backgroundMusicIsEnabled {
                                             MusicPlayer.shared.startBackgroundMusic()
@@ -65,14 +68,11 @@ struct UserInteractionView: View {
                                     }) {
                                         VStack(spacing: 5) {
                                             Image(systemName:self.userInteractionViewModel.backgroundMusicIsEnabled ? "speaker" : "speaker.slash").resizable()
-                                                .frame(width: 30,height: 30)
-                                                .foregroundColor(.cyan)
-                                            
-                                            Text(" Music ").bold().font(.system(size: 15))
-                                                .bold()
+                                                .frame(width: 20,height: 20)
+                                                .foregroundColor(.white)
                                         }
                                     }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
-                                }.padding(.trailing, 20)
+                                }.padding(.all)
                             }.padding(.all, 10)
                             
                         }.padding(.all,0)
@@ -83,8 +83,9 @@ struct UserInteractionView: View {
                         VStack(spacing: 10) {
                             HStack(alignment: .center, spacing: 20){
                                 Text("  Choose your move  ")
-                                    .font(.system(size: 25))
-                                    .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
+                                    .font(.system(size: 30))
+                                    .bold()
+                                    .gradientForeground(colors: [.indigo, .cyan])
                             }
                             HStack(alignment: .center,spacing: 15) {
                                 Spacer()
@@ -103,7 +104,7 @@ struct UserInteractionView: View {
                                     .resizable()
                                     .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Paper" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
                                     .frame(width: 100, height: 100)
-                                     .onTapGesture {
+                                    .onTapGesture {
                                         userTapOnElement(senderId: "Paper")
                                         refresh()
                                     }
@@ -129,12 +130,12 @@ struct UserInteractionView: View {
                                 Text(" \(UserDefaults.standard.string(forKey: "GoogleUserName") ?? "Your")'s Points: \(userInteractionViewModel.userPoint)  ")
                                     .font(.system(size: 25))
                                     .bold()
-                                    .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
+                                    .gradientForeground(colors: [.indigo, .cyan])
                                     .padding()
                                 Text("  AI Points: \(userInteractionViewModel.appAIPoint)  ")
                                     .font(.system(size: 25))
                                     .bold()
-                                    .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
+                                    .gradientForeground(colors: [.indigo, .cyan])
                             }
                         }
                     }
@@ -152,7 +153,7 @@ struct UserInteractionView: View {
                                 Text("  Game Points: Best of \(userInteractionViewModel.gamePoint)  ")
                                     .font(.system(size: 25))
                                     .bold()
-                                    .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
+                                    .gradientForeground(colors: [.indigo, .cyan])
                                     .padding(.all, 15)
                                 HStack(alignment: .center) {
                                     Spacer()
@@ -162,13 +163,13 @@ struct UserInteractionView: View {
                                         Text("AI's Choice")
                                             .font(.system(size: 15))
                                             .bold()
-                                            .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
+                                            .gradientForeground(colors: [.indigo, .cyan])
                                     }
                                     Spacer().foregroundColor(Color.white)
                                     Text(userInteractionViewModel.whosePoint == "Tie" ? "Tie" : userInteractionViewModel.whosePoint == "User" ? "You got +1 point" : "AI got +1 point")
                                         .font(.system(size: 15))
                                         .bold()
-                                        .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
+                                        .gradientForeground(colors: [.indigo, .cyan])
                                     Spacer()
                                     VStack {
                                         Image(userInteractionViewModel.userSelectedItem).resizable()
@@ -176,8 +177,8 @@ struct UserInteractionView: View {
                                         Text("Your's Choice")
                                             .font(.system(size: 15))
                                             .bold()
-                                            .labelStyle(GradientTextStyle(colour1: Color.indigo, colour2: Color.cyan))
-
+                                            .gradientForeground(colors: [.indigo, .cyan])
+                                        
                                     }
                                     Spacer()
                                 }.padding(.all, 10)
@@ -201,8 +202,8 @@ struct UserInteractionView: View {
                                     Text("\(userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint ? "  Congratulations you won!  " : "  AI Won!  ")")
                                         .font(.system(size: 30))
                                         .bold()
-                                        .foregroundColor(Color.white)
-                                        .background(.cyan)
+                                        .gradientForeground(colors: [.indigo, .cyan])
+                                        .background(.white)
                                         .cornerRadius(5)
                                     Spacer()
                                 }.padding(.all, 0)

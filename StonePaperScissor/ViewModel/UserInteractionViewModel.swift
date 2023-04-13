@@ -29,6 +29,7 @@ class UserInteractionViewModel: ObservableObject {
     @Published var updatedColour: CGColor = UIColor.black.cgColor
     @Published var gamePoint: Int = 3
     @Published var showWinnerView: Bool = false
+    @Published var presentInfoView: Bool = false
     
     
 }
