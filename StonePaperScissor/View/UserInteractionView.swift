@@ -132,7 +132,7 @@ struct UserInteractionView: View {
                                     .bold()
                                     .gradientForeground(colors: [.indigo, .cyan])
                                     .padding()
-                                Text("  AI Points: \(userInteractionViewModel.appAIPoint)  ")
+                                Text("  AI's Points: \(userInteractionViewModel.appAIPoint)  ")
                                     .font(.system(size: 25))
                                     .bold()
                                     .gradientForeground(colors: [.indigo, .cyan])
