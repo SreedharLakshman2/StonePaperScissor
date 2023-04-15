@@ -123,9 +123,10 @@ struct UserInteractionView: View {
                                         Image(systemName: "gamecontroller.fill")
                                     }.disabled(userInteractionViewModel.gamePoint == 10)
                                 } label: {
-                                     Text("Change game points")
+                                    Text("Change game points").gradientForeground(colors: [.indigo, .cyan])
                                      Image(systemName: "gamecontroller.fill")
                                 }.disabled((userInteractionViewModel.userPoint == 0 && userInteractionViewModel.appAIPoint == 0) ? false : true)
+                                    .padding(.all)
                             }.padding(.all,0)
                             
                             Spacer()
@@ -264,10 +265,10 @@ struct UserInteractionView: View {
                                         
                                 }.padding([.trailing, .leading], 15)
                                     .cornerRadius(10)
-                                    .background(.white)
+                                    .background(.black)
                                 Spacer().frame(height: nil)
                             }.padding(.all,0)
-                            .background(.white)
+                            .background(.black)
                             //MARK: - Final view
                             if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint)) && (userInteractionViewModel.showWinnerView) {
                                 VStack(alignment: .center, spacing: 15) {
@@ -306,7 +307,7 @@ struct UserInteractionView: View {
                                     }.buttonStyle(GradientButtonStyle(colour1: Color.cyan, colour2: Color.indigo))
                                     Spacer().frame(height: nil)
                                 }.padding(.all, 0)
-                                    .background(.white)
+                                    .background(.black)
                                     .cornerRadius(15)
                             }
                         }

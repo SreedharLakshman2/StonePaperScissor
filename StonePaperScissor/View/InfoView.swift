@@ -26,7 +26,7 @@ struct InfoView: View {
                     .gradientForeground(colors: [.indigo, .cyan])
                     .onTapGesture {
                     self.presentationMode.wrappedValue.dismiss()
-                }.padding(.all, 20)
+                }.padding(.top, 20)
                 Text("Other apps from us").font(.system(size: 30))
                     .bold()
                 
