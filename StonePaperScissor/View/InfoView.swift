@@ -14,17 +14,19 @@ struct InfoView: View {
     var defaults =  UserDefaults.standard
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var isSignOutHappend: Bool
-
-//    init() {
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//    }
     
     var body: some View {
         
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
                 Spacer().frame(height: 40)
+                Text("<- Go Back")
+                    .font(.system(size: 20))
+                    .bold()
+                    .gradientForeground(colors: [.indigo, .cyan])
+                    .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }.padding(.all, 20)
                 Text("Other apps from us").font(.system(size: 30))
                     .bold()
                 
@@ -68,9 +70,7 @@ struct InfoView: View {
                          self.presentationMode.wrappedValue.dismiss()
                     }){
                         HStack {
-                            Image("Google").resizable()
-                                .frame(width: 20, height: 20)
-                            Text("Logout")
+                             Text(" Logout ")
                                 .font(.system(size: 15))
                                 .bold()
                         }
@@ -88,27 +88,19 @@ struct InfoView: View {
                     
                     }){
                         HStack {
-                            Image(systemName: "apple.logo").resizable()
-                                .frame(width: 20, height: 20)
-                            Text("Logout")
+                            Text(" Logout ")
                                 .font(.system(size: 15))
                                 .bold()
                         }
                     }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.red))
                 }
                 Spacer()
-                Text("<- Go Back")
-                    .font(.system(size: 20))
-                    .bold()
-                    .gradientForeground(colors: [.indigo, .cyan])
-                    .onTapGesture {
-                    self.presentationMode.wrappedValue.dismiss()
-                }.padding(.all, 20)
             }.padding(.all, 20)
                 .edgesIgnoringSafeArea(.top) //or .edgesIgnoringSafeArea(.all)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
         }.navigationBarBackButtonHidden(true)
+            .navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

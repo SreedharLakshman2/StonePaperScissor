@@ -54,211 +54,235 @@ struct UserInteractionView: View {
     var body: some View {
         
         NavigationView {
-            
-            ZStack {
-                VStack {
-                    //MARK: - SettingsView
-                    VStack(alignment: .center) {
-                        Spacer().frame(height: 60)
-                        //MARK: - Speaker and change colour action
-                        
-                        VStack {
-                            HStack(spacing: 10) {
-                                NavigationLink(destination: InfoView(isSignOutHappend: self.$isSignOutHappend)) {
-                                    Image("settings").resizable()
-                                        .foregroundColor(.indigo)
-                                        .frame(width: 30, height: 30, alignment: .center)
-                                        .padding(.all)
-                                }
-                                Button(action: {
-                                    userInteractionViewModel.updatedColour = colourArray.randomElement() ?? UIColor.black.cgColor
-                                }){
-                                    Text(" Change View Colour ")
-                                        .font(.system(size: 15))
-                                        .bold()
-                                }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
-                                    .padding(.all)
-                                VStack(spacing: 0) {
+            ScrollView {
+                
+                ZStack {
+                    VStack {
+                        //MARK: - SettingsView
+                        VStack(alignment: .center) {
+                            Spacer().frame(height: 60)
+                            //MARK: - Speaker and change colour action
+                            
+                            VStack {
+                                HStack(spacing: 10) {
+                                    Spacer()
                                     Button(action: {
-                                        self.userInteractionViewModel.backgroundMusicIsEnabled.toggle()
-                                        if userInteractionViewModel.backgroundMusicIsEnabled {
-                                            MusicPlayer.shared.startBackgroundMusic()
-                                        }
-                                        else {
-                                            MusicPlayer.shared.stopBackgroundMusic()
-                                        }
-                                    }) {
-                                        VStack(spacing: 5) {
-                                            Image(systemName:self.userInteractionViewModel.backgroundMusicIsEnabled ? "speaker" : "speaker.slash").resizable()
-                                                .frame(width: 20,height: 20)
-                                                .foregroundColor(.white)
+                                    }){
+                                        NavigationLink(destination: InfoView(isSignOutHappend: self.$isSignOutHappend)) {
+                                            Image("settings").resizable()
+                                                .frame(width: 20, height: 20)
                                         }
                                     }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
-                                }.padding(.all)
-                            }.padding(.all, 10)
-                            
-                        }.padding(.all,0)
-                        
-                        Spacer()
-                        
-                        //MARK: - Choose the move view
-                        VStack(spacing: 10) {
-                            HStack(alignment: .center, spacing: 20){
-                                Text("  Choose your move  ")
-                                    .font(.system(size: 30))
-                                    .bold()
-                                    .gradientForeground(colors: [.indigo, .cyan])
-                            }
-                            HStack(alignment: .center,spacing: 15) {
-                                Spacer()
-                                //Tapgesture for  Stone
-                                Image("Stone")
-                                    .resizable()
-                                    .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Stone" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
-                                    .frame(width: 100, height: 100)
-                                    .onTapGesture{
-                                        userTapOnElement(senderId: "Stone")
-                                        refresh()
-                                    }
-                                Spacer()
-                                //Tapgesture for  Paper
-                                Image("Paper")
-                                    .resizable()
-                                    .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Paper" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
-                                    .frame(width: 100, height: 100)
-                                    .onTapGesture {
-                                        userTapOnElement(senderId: "Paper")
-                                        refresh()
-                                    }
-                                Spacer()
-                                //Tapgesture for  Scissor
-                                Image("Scissor")
-                                    .resizable()
-                                    .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Scissor" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
-                                    .frame(width: 100, height: 100)
-                                    .onTapGesture {
-                                        userTapOnElement(senderId: "Scissor")
-                                        refresh()
-                                    }
-                                Spacer()
-                            }.padding(.all, 10)
-                            
-                        }.padding(.all, 0)
-                        Spacer()
-                        
-                        //MARK: - User Point view
-                        VStack(alignment: .center) {
-                            VStack {
-                                Text("\(userName)'s Points: \(userInteractionViewModel.userPoint) ")
-                                    .font(.system(size: 25))
-                                    .bold()
-                                    .gradientForeground(colors: [.indigo, .cyan])
-                                    .padding()
-                                Text("  AI's Points: \(userInteractionViewModel.appAIPoint)  ")
-                                    .font(.system(size: 25))
-                                    .bold()
-                                    .gradientForeground(colors: [.indigo, .cyan])
-                            }
-                        }
-                        Spacer().frame(height: 60)
-                    }
-                    .padding(.all, 0)
-                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                    
-                }.padding(.all, 0)
-                    .background(Color(cgColor: userInteractionViewModel.updatedColour))
-                if (userInteractionViewModel.showAlert) && (userInteractionViewModel.whosePoint != "") {
-                    ZStack {
-                        
-                        VStack {
-                            Spacer().frame(height: nil)
-                            VStack(alignment: .center) {
-                                Text("  Game Points: Best of \(userInteractionViewModel.gamePoint)  ")
-                                    .font(.system(size: 25))
-                                    .bold()
-                                    .gradientForeground(colors: [.indigo, .cyan])
-                                    .padding(.all, 15)
-                                HStack(alignment: .center) {
                                     Spacer()
-                                    VStack {
-                                        Image(userInteractionViewModel.randomlyAISelectedItem).resizable()
-                                            .frame(width: 50,height: 100)
-                                        Text("AI's Choice")
+                                    Button(action: {
+                                        userInteractionViewModel.updatedColour = colourArray.randomElement() ?? UIColor.black.cgColor
+                                    }){
+                                        Text(" Change View Colour ")
                                             .font(.system(size: 15))
                                             .bold()
-                                            .gradientForeground(colors: [.indigo, .cyan])
-                                    }
-                                    Spacer().foregroundColor(Color.white)
-                                    Text(userInteractionViewModel.whosePoint == "Tie" ? "Tie" : userInteractionViewModel.whosePoint == "User" ? "You got +1 point" : "AI got +1 point")
-                                        .font(.system(size: 15))
-                                        .bold()
-                                        .gradientForeground(colors: [.indigo, .cyan])
+                                    }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
                                     Spacer()
-                                    VStack {
-                                        Image(userInteractionViewModel.userSelectedItem).resizable()
-                                            .frame(width: 50,height: 100)
-                                        Text("Your's Choice")
-                                            .font(.system(size: 15))
-                                            .bold()
-                                            .gradientForeground(colors: [.indigo, .cyan])
-                                        
+                                    VStack(spacing: 0) {
+                                        Button(action: {
+                                            self.userInteractionViewModel.backgroundMusicIsEnabled.toggle()
+                                            if userInteractionViewModel.backgroundMusicIsEnabled {
+                                                MusicPlayer.shared.startBackgroundMusic()
+                                            }
+                                            else {
+                                                MusicPlayer.shared.stopBackgroundMusic()
+                                            }
+                                        }) {
+                                            VStack(spacing: 5) {
+                                                Image(systemName:self.userInteractionViewModel.backgroundMusicIsEnabled ? "speaker" : "speaker.slash").resizable()
+                                                    .frame(width: 20,height: 20)
+                                                    .foregroundColor(.white)
+                                            }
+                                        }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
                                     }
                                     Spacer()
                                 }.padding(.all, 10)
-                                    .background((userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red))
-                                    .padding([.trailing, .leading], 15)
-                                    .cornerRadius(10)
-                            }.padding([.trailing, .leading], 15)
-                                .cornerRadius(10)
-                                .background(.white)
-                            Spacer().frame(height: nil)
-                        }.padding(.all,0)
-                            .background(.white)
-                        //MARK: - Final view
-                        if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint)) && (userInteractionViewModel.showWinnerView) {
-                            VStack(alignment: .center, spacing: 15) {
-                                Spacer().frame(height: nil)
-                                Image("Winner").resizable()
-                                    .frame(width: 150, height:  150)
-                                HStack {
-                                    Spacer()
-                                    Text("\(userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint ? "  Congratulations you won!  " : "  AI Won!  ")")
+                                
+                            }.padding(.all,0)
+                            
+                            Spacer()
+                            
+                            //MARK: - Choose the move view
+                            VStack(spacing: 10) {
+                                HStack(alignment: .center, spacing: 20){
+                                    Text("  Choose your move  ")
                                         .font(.system(size: 30))
                                         .bold()
                                         .gradientForeground(colors: [.indigo, .cyan])
-                                        .background(.white)
-                                        .cornerRadius(5)
+                                }
+                                HStack(alignment: .center,spacing: 15) {
                                     Spacer()
-                                }.padding(.all, 0)
-                                Button(action: {
-                                    userInteractionViewModel.userPoint = 0
-                                    userInteractionViewModel.appAIPoint = 0
-                                    userInteractionViewModel.whosePoint = ""
-                                    userInteractionViewModel.tieCount = 0
-                                    
-                                    userInteractionViewModel.showAlert = false
-                                    userInteractionViewModel.whosePoint = ""
-                                    userInteractionViewModel.randomlyAISelectedItem = ""
-                                    userInteractionViewModel.userSelectedItem = ""
-                                    userInteractionViewModel.userSelectedElementInfoToShowShadow = ""
-                                    userInteractionViewModel.appAISelectedElementInfoToShowShadow = ""
-                                    userInteractionViewModel.showWinnerView = false
-                                }) {
-                                    Text("  CLOSE  ")
+                                    //Tapgesture for  Stone
+                                    VStack(alignment: .center,spacing: 5) {
+                                        Image("Stone")
+                                            .resizable()
+                                            .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Stone" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
+                                            .frame(width: 100, height: 100)
+                                            .onTapGesture{
+                                                userTapOnElement(senderId: "Stone")
+                                                refresh()
+                                            }
+                                        Text("Stone")
+                                            .font(.system(size: 15))
+                                            .bold()
+                                            .gradientForeground(colors: [.indigo, .cyan])
+                                    }
+                                    Spacer()
+                                    //Tapgesture for  Paper
+                                    VStack(alignment: .center,spacing: 5) {
+                                        Image("Paper")
+                                            .resizable()
+                                            .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Paper" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
+                                            .frame(width: 100, height: 100)
+                                            .onTapGesture {
+                                                userTapOnElement(senderId: "Paper")
+                                                refresh()
+                                            }
+                                        Text("Paper")
+                                            .font(.system(size: 15))
+                                            .bold()
+                                            .gradientForeground(colors: [.indigo, .cyan])
+                                    }
+                                    Spacer()
+                                    //Tapgesture for  Scissor
+                                    VStack(alignment: .center,spacing: 5) {
+                                        Image("Scissor")
+                                            .resizable()
+                                            .shadow(color: userInteractionViewModel.userSelectedElementInfoToShowShadow == "Scissor" ? Color(UIColor.green) : Color(UIColor.clear), radius: 5.0)
+                                            .frame(width: 100, height: 100)
+                                            .onTapGesture {
+                                                userTapOnElement(senderId: "Scissor")
+                                                refresh()
+                                            }
+                                        Text("Scissors")
+                                            .font(.system(size: 15))
+                                            .bold()
+                                            .gradientForeground(colors: [.indigo, .cyan])
+                                    }
+                                    Spacer()
+                                }.padding(.all, 10)
+                                
+                            }.padding(.all, 0)
+                            Spacer()
+                            
+                            //MARK: - User Point view
+                            VStack(alignment: .center) {
+                                VStack {
+                                    Text("\(userName)'s Points: \(userInteractionViewModel.userPoint) ")
                                         .font(.system(size: 25))
                                         .bold()
-                                        .cornerRadius(5)
-                                }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.orange))
-                                Spacer().frame(height: nil)
-                            }.padding(.all, 0)
-                                .background(.white)
-                                .cornerRadius(15)
+                                        .gradientForeground(colors: [.indigo, .cyan])
+                                        .padding()
+                                    Text("  AI's Points: \(userInteractionViewModel.appAIPoint)  ")
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .gradientForeground(colors: [.indigo, .cyan])
+                                }
+                            }
+                            Spacer().frame(height: 60)
                         }
+                        .padding(.all, 0)
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                        
+                    }.padding(.all, 0)
+                        .background(Color(cgColor: userInteractionViewModel.updatedColour))
+                    if (userInteractionViewModel.showAlert) && (userInteractionViewModel.whosePoint != "") {
+                        ZStack {
+                            
+                            VStack {
+                                Spacer().frame(height: nil)
+                                VStack(alignment: .center) {
+                                    Text("  Game Points: Best of \(userInteractionViewModel.gamePoint)  ")
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .gradientForeground(colors: [.indigo, .cyan])
+                                        .padding(.all, 15)
+                                    HStack(alignment: .center) {
+                                        Spacer()
+                                        VStack {
+                                            Image(userInteractionViewModel.randomlyAISelectedItem).resizable()
+                                                .frame(width: 50,height: 100)
+                                            Text("AI's Choice")
+                                                .font(.system(size: 15))
+                                                .bold()
+                                                .gradientForeground(colors: [.indigo, .cyan])
+                                        }
+                                        Spacer().foregroundColor(Color.white)
+                                        Text(userInteractionViewModel.whosePoint == "Tie" ? "Tie" : userInteractionViewModel.whosePoint == "User" ? "You got +1 point" : "AI got +1 point")
+                                            .font(.system(size: 15))
+                                            .bold()
+                                            .gradientForeground(colors: [.indigo, .cyan])
+                                        Spacer()
+                                        VStack {
+                                            Image(userInteractionViewModel.userSelectedItem).resizable()
+                                                .frame(width: 50,height: 100)
+                                            Text("Your's Choice")
+                                                .font(.system(size: 15))
+                                                .bold()
+                                                .gradientForeground(colors: [.indigo, .cyan])
+                                            
+                                        }
+                                        Spacer()
+                                    }.padding(.all, 10)
+                                        .background((userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red))
+                                        .padding([.trailing, .leading], 15)
+                                        .cornerRadius(10)
+                                }.padding([.trailing, .leading], 15)
+                                    .cornerRadius(10)
+                                    .background(.white)
+                                Spacer().frame(height: nil)
+                            }.padding(.all,0)
+                                .background(.white)
+                            //MARK: - Final view
+                            if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint)) && (userInteractionViewModel.showWinnerView) {
+                                VStack(alignment: .center, spacing: 15) {
+                                    Spacer().frame(height: nil)
+                                    Image("Winner").resizable()
+                                        .frame(width: 150, height:  150)
+                                    HStack {
+                                        Spacer()
+                                        Text("\(userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint ? "  Congratulations you won!  " : "  AI Won!  ")")
+                                            .font(.system(size: 30))
+                                            .bold()
+                                            .gradientForeground(colors: [.indigo, .cyan])
+                                            .background(.white)
+                                            .cornerRadius(5)
+                                        Spacer()
+                                    }.padding(.all, 0)
+                                    Button(action: {
+                                        userInteractionViewModel.userPoint = 0
+                                        userInteractionViewModel.appAIPoint = 0
+                                        userInteractionViewModel.whosePoint = ""
+                                        userInteractionViewModel.tieCount = 0
+                                        
+                                        userInteractionViewModel.showAlert = false
+                                        userInteractionViewModel.whosePoint = ""
+                                        userInteractionViewModel.randomlyAISelectedItem = ""
+                                        userInteractionViewModel.userSelectedItem = ""
+                                        userInteractionViewModel.userSelectedElementInfoToShowShadow = ""
+                                        userInteractionViewModel.appAISelectedElementInfoToShowShadow = ""
+                                        userInteractionViewModel.showWinnerView = false
+                                    }) {
+                                        Text("  CLOSE  ")
+                                            .font(.system(size: 25))
+                                            .bold()
+                                            .cornerRadius(5)
+                                    }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.orange))
+                                    Spacer().frame(height: nil)
+                                }.padding(.all, 0)
+                                    .background(.white)
+                                    .cornerRadius(15)
+                            }
+                        }
+                        
                     }
-                    
                 }
-            }
-            .onAppear{
+            }.padding(.all, 0)
+             .onAppear{
                 userInteractionViewModel.backgroundMusicIsEnabled = false
                 MusicPlayer.shared.stopBackgroundMusic()
                 
@@ -269,7 +293,7 @@ struct UserInteractionView: View {
             .edgesIgnoringSafeArea(.top) //or .edgesIgnoringSafeArea(.all)
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
         
         
     }
