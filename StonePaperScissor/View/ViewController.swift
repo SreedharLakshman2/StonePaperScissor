@@ -25,6 +25,10 @@ class ViewController: UIViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // In this case, we instantiate the banner with desired ad size.
+        addCornerRadiusTo(button: signInWithGoogleButtonOutlet)
+        addCornerRadiusTo(button: signInWithAppleAccountButtonOutlet)
+        addCornerRadiusTo(button: playWithOutSignIn)
+
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
         addBannerViewToView(bannerView)
         bannerView.adUnitID = "ca-app-pub-9471606055191983/3229282428"
@@ -113,6 +117,11 @@ class ViewController: UIViewController, GADBannerViewDelegate {
             return
         }
         
+    }
+    
+    func addCornerRadiusTo(button: UIButton) {
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -256,5 +265,22 @@ struct ATT {
         @unknown default:
             fatalError()
         }
+    }
+}
+
+extension UIView {
+
+    func applyGradient(colours: [UIColor]) -> CAGradientLayer {
+        return self.applyGradient(colours: colours, locations: nil)
+    }
+
+
+    func applyGradient(colours: [UIColor], locations: [NSNumber]?) -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+        return gradient
     }
 }

@@ -23,30 +23,41 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kVo-NX-yXq">
                                         <rect key="frame" x="10" y="0.0" width="373" height="715"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stone Paper Scissors Fun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFI-7E-0h5">
-                                                <rect key="frame" x="0.0" y="0.0" width="373" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="FGQ-8Z-Lw9"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-cb-t4N">
-                                                <rect key="frame" x="0.0" y="60" width="373" height="475"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="535"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SPS" translatesAutoresizingMaskIntoConstraints="NO" id="67f-db-4Tc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="475"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i7Y-oo-I6B">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="535"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="J9X-Wi-S27">
+                                                                <rect key="frame" x="0.0" y="0.0" width="373" height="262.66666666666669"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stone" translatesAutoresizingMaskIntoConstraints="NO" id="KvZ-7z-tS5">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="262.66666666666669"/>
+                                                                    </imageView>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Paper" translatesAutoresizingMaskIntoConstraints="NO" id="jF4-hf-7x4">
+                                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="176.33333333333337" height="262.66666666666669"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8x9-kJ-IjR">
+                                                                <rect key="frame" x="0.0" y="272.66666666666674" width="373" height="262.33333333333326"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scissor" translatesAutoresizingMaskIntoConstraints="NO" id="7yZ-2i-Ktb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="262.33333333333331"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="67f-db-4Tc" firstAttribute="leading" secondItem="jaF-cb-t4N" secondAttribute="leading" id="4ar-gG-6sD"/>
-                                                    <constraint firstItem="67f-db-4Tc" firstAttribute="top" secondItem="jaF-cb-t4N" secondAttribute="top" id="6vc-TY-atW"/>
-                                                    <constraint firstAttribute="trailing" secondItem="67f-db-4Tc" secondAttribute="trailing" id="M89-0k-HpI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="67f-db-4Tc" secondAttribute="bottom" id="cVS-Is-xth"/>
+                                                    <constraint firstAttribute="bottom" secondItem="i7Y-oo-I6B" secondAttribute="bottom" id="Gg5-yb-tgp"/>
+                                                    <constraint firstItem="i7Y-oo-I6B" firstAttribute="leading" secondItem="jaF-cb-t4N" secondAttribute="leading" id="PS2-sA-Kxz"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="eSK-Gw-nZt"/>
+                                                    <constraint firstAttribute="trailing" secondItem="i7Y-oo-I6B" secondAttribute="trailing" id="kUz-Lp-Izc"/>
+                                                    <constraint firstItem="i7Y-oo-I6B" firstAttribute="top" secondItem="jaF-cb-t4N" secondAttribute="top" id="rUt-6J-hEo"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5R-vm-z7R">
@@ -158,7 +169,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SPS" width="512" height="512"/>
+        <image name="Paper" width="600" height="580"/>
+        <image name="Scissor" width="4000" height="4354"/>
+        <image name="Stone" width="2085" height="1923"/>
         <image name="apple.logo" catalog="system" width="105" height="128"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
         <image name="globe" catalog="system" width="128" height="123"/>

@@ -54,7 +54,6 @@ struct UserInteractionView: View {
     var body: some View {
         
         NavigationView {
-            ScrollView {
                 
                 ZStack {
                     VStack {
@@ -63,7 +62,7 @@ struct UserInteractionView: View {
                             Spacer().frame(height: 60)
                             //MARK: - Speaker and change colour action
                             
-                            VStack {
+                            VStack(spacing: 10) {
                                 HStack(spacing: 10) {
                                     Spacer()
                                     Button(action: {
@@ -101,7 +100,32 @@ struct UserInteractionView: View {
                                     }
                                     Spacer()
                                 }.padding(.all, 10)
-                                
+                                Menu {
+                                    Button {
+                                        // do something
+                                        userInteractionViewModel.gamePoint = 3
+                                    } label: {
+                                        Text("Set game points to 3")
+                                        Image(systemName: "gamecontroller.fill")
+                                    }.disabled(userInteractionViewModel.gamePoint == 3)
+                                    Button {
+                                        // do something
+                                        userInteractionViewModel.gamePoint = 5
+                                    } label: {
+                                        Text("Set game points to 5")
+                                        Image(systemName: "gamecontroller.fill")
+                                    }.disabled(userInteractionViewModel.gamePoint == 5)
+                                    Button {
+                                        // do something
+                                        userInteractionViewModel.gamePoint = 10
+                                    } label: {
+                                        Text("Set game points to 10")
+                                        Image(systemName: "gamecontroller.fill")
+                                    }.disabled(userInteractionViewModel.gamePoint == 10)
+                                } label: {
+                                     Text("Change game points")
+                                     Image(systemName: "gamecontroller.fill")
+                                }.disabled((userInteractionViewModel.userPoint == 0 && userInteractionViewModel.appAIPoint == 0) ? false : true)
                             }.padding(.all,0)
                             
                             Spacer()
@@ -230,13 +254,20 @@ struct UserInteractionView: View {
                                     }.padding(.all, 10)
                                         .background((userInteractionViewModel.whosePoint == "User" ? Color.green : userInteractionViewModel.whosePoint == "Tie" ? Color.yellow : Color.red))
                                         .padding([.trailing, .leading], 15)
-                                        .cornerRadius(10)
+                                        .clipShape(
+
+                                                    // 1
+                                                    RoundedRectangle(
+                                                        cornerRadius: 20
+                                                    )
+                                                )
+                                        
                                 }.padding([.trailing, .leading], 15)
                                     .cornerRadius(10)
                                     .background(.white)
                                 Spacer().frame(height: nil)
                             }.padding(.all,0)
-                                .background(.white)
+                            .background(.white)
                             //MARK: - Final view
                             if ((userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint) || (userInteractionViewModel.appAIPoint == userInteractionViewModel.gamePoint)) && (userInteractionViewModel.showWinnerView) {
                                 VStack(alignment: .center, spacing: 15) {
@@ -245,7 +276,7 @@ struct UserInteractionView: View {
                                         .frame(width: 150, height:  150)
                                     HStack {
                                         Spacer()
-                                        Text("\(userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint ? "  Congratulations you won!  " : "  AI Won!  ")")
+                                        Text("\(userInteractionViewModel.userPoint == userInteractionViewModel.gamePoint ? "  Congratulations You Won!  " : "  AI Won!  ")")
                                             .font(.system(size: 30))
                                             .bold()
                                             .gradientForeground(colors: [.indigo, .cyan])
@@ -266,12 +297,13 @@ struct UserInteractionView: View {
                                         userInteractionViewModel.userSelectedElementInfoToShowShadow = ""
                                         userInteractionViewModel.appAISelectedElementInfoToShowShadow = ""
                                         userInteractionViewModel.showWinnerView = false
+                                        userInteractionViewModel.gamePoint = 3
                                     }) {
                                         Text("  CLOSE  ")
                                             .font(.system(size: 25))
                                             .bold()
                                             .cornerRadius(5)
-                                    }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.orange))
+                                    }.buttonStyle(GradientButtonStyle(colour1: Color.cyan, colour2: Color.indigo))
                                     Spacer().frame(height: nil)
                                 }.padding(.all, 0)
                                     .background(.white)
@@ -280,7 +312,6 @@ struct UserInteractionView: View {
                         }
                         
                     }
-                }
             }.padding(.all, 0)
              .onAppear{
                 userInteractionViewModel.backgroundMusicIsEnabled = false
