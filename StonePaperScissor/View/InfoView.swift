@@ -13,11 +13,12 @@ struct InfoView: View {
     
     var defaults =  UserDefaults.standard
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Binding var isSignOutHappend: Bool
 
-    init() {
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-    }
+//    init() {
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//    }
     
     var body: some View {
         
@@ -56,16 +57,40 @@ struct InfoView: View {
                     }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
                     Spacer()
                 }
+                // SignOut Google account
                 if (defaults.bool(forKey: "isSignInCompleted") && (defaults.bool(forKey: "isSignInCompletedWithGoogleAccount"))) {
                      Button(action: {
                          GIDSignIn.sharedInstance.signOut()
                          UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
                          UserDefaults.standard.set(false, forKey: "isSignInCompletedWithGoogleAccount")
                          UserDefaults.standard.set("", forKey: "GoogleUserName")
+                         isSignOutHappend = true
                          self.presentationMode.wrappedValue.dismiss()
                     }){
-                        VStack {
-                            Text("SignOut")
+                        HStack {
+                            Image("Google").resizable()
+                                .frame(width: 20, height: 20)
+                            Text("Logout")
+                                .font(.system(size: 15))
+                                .bold()
+                        }
+                    }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.red))
+                }
+                // SignOut Apple account
+                if (defaults.bool(forKey: "isSignInCompleted") && (defaults.bool(forKey: "isSignInCompletedWithAppleAccount"))) {
+                     Button(action: {
+                         GIDSignIn.sharedInstance.signOut()
+                         UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
+                         UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount")
+                         UserDefaults.standard.set("", forKey: "AppleUserName")
+                         isSignOutHappend = true
+                         self.presentationMode.wrappedValue.dismiss()
+                    
+                    }){
+                        HStack {
+                            Image(systemName: "apple.logo").resizable()
+                                .frame(width: 20, height: 20)
+                            Text("Logout")
                                 .font(.system(size: 15))
                                 .bold()
                         }
@@ -88,8 +113,3 @@ struct InfoView: View {
     }
 }
 
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoView()
-    }
-}

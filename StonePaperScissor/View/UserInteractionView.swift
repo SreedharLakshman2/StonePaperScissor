@@ -26,6 +26,9 @@ struct UserInteractionView: View {
     @State var name: String = "User"
     @State var profileImageURL: URL = URL(fileURLWithPath: "")
     @State var colourArray: [CGColor] = [UIColor.white.cgColor, UIColor.red.cgColor, UIColor.black.cgColor, UIColor.yellow.cgColor]
+    @State var isSignOutHappend: Bool = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     
     init() {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
@@ -61,10 +64,10 @@ struct UserInteractionView: View {
                         
                         VStack {
                             HStack(spacing: 10) {
-                                NavigationLink(destination: InfoView()) {
-                                    Image(systemName: "info.square").resizable()
-                                        .frame(width: 30, height: 30, alignment: .center)
+                                NavigationLink(destination: InfoView(isSignOutHappend: self.$isSignOutHappend)) {
+                                    Image("settings").resizable()
                                         .foregroundColor(.indigo)
+                                        .frame(width: 30, height: 30, alignment: .center)
                                         .padding(.all)
                                 }
                                 Button(action: {
@@ -258,6 +261,10 @@ struct UserInteractionView: View {
             .onAppear{
                 userInteractionViewModel.backgroundMusicIsEnabled = false
                 MusicPlayer.shared.stopBackgroundMusic()
+                
+                if isSignOutHappend {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
             }
             .edgesIgnoringSafeArea(.top) //or .edgesIgnoringSafeArea(.all)
             .navigationBarBackButtonHidden(true)
@@ -355,11 +362,6 @@ struct UserInteractionView: View {
     }
 }
 
-struct UserInteractionView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserInteractionView()
-    }
-}
 
 class MusicPlayer {
     static let shared = MusicPlayer()
