@@ -24,27 +24,27 @@
                                         <rect key="frame" x="10" y="0.0" width="373" height="715"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-cb-t4N">
-                                                <rect key="frame" x="0.0" y="0.0" width="373" height="535"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="655"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i7Y-oo-I6B">
-                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="535"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="655"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="J9X-Wi-S27">
-                                                                <rect key="frame" x="0.0" y="0.0" width="373" height="262.66666666666669"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="373" height="322.66666666666669"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stone" translatesAutoresizingMaskIntoConstraints="NO" id="KvZ-7z-tS5">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="262.66666666666669"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="322.66666666666669"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Paper" translatesAutoresizingMaskIntoConstraints="NO" id="jF4-hf-7x4">
-                                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="176.33333333333337" height="262.66666666666669"/>
+                                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="176.33333333333337" height="322.66666666666669"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8x9-kJ-IjR">
-                                                                <rect key="frame" x="0.0" y="272.66666666666674" width="373" height="262.33333333333326"/>
+                                                                <rect key="frame" x="0.0" y="332.66666666666674" width="373" height="322.33333333333326"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Scissor" translatesAutoresizingMaskIntoConstraints="NO" id="7yZ-2i-Ktb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="262.33333333333331"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="322.33333333333331"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
@@ -60,34 +60,6 @@
                                                     <constraint firstItem="i7Y-oo-I6B" firstAttribute="top" secondItem="jaF-cb-t4N" secondAttribute="top" id="rUt-6J-hEo"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5R-vm-z7R">
-                                                <rect key="frame" x="0.0" y="545" width="373" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="E4W-J4-ONQ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="  SignIn with apple" image="apple.logo" catalog="system"/>
-                                                <connections>
-                                                    <action selector="signInWithAppleButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FhE-IV-8rf"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr1-iD-but">
-                                                <rect key="frame" x="0.0" y="605" width="373" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="M4G-dW-nI5"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="  SignIn with google" image="globe" catalog="system"/>
-                                                <connections>
-                                                    <action selector="signInWithGoogleButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4p5-BJ-oGP"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDE-pu-2oB">
                                                 <rect key="frame" x="0.0" y="665" width="373" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,7 +69,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="  Play without signIn" image="gamecontroller.fill" catalog="system"/>
+                                                <state key="normal" title="  Play " image="gamecontroller.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="playWithoutLoginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cDA-M6-SWQ"/>
                                                 </connections>
@@ -126,8 +98,6 @@
                     <navigationItem key="navigationItem" id="Wq7-3j-A0t"/>
                     <connections>
                         <outlet property="playWithOutSignIn" destination="GDE-pu-2oB" id="0n7-99-jAl"/>
-                        <outlet property="signInWithAppleAccountButtonOutlet" destination="C5R-vm-z7R" id="sgc-Ee-G6l"/>
-                        <outlet property="signInWithGoogleButtonOutlet" destination="kr1-iD-but" id="gbv-cQ-hat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -172,9 +142,7 @@
         <image name="Paper" width="600" height="580"/>
         <image name="Scissor" width="4000" height="4354"/>
         <image name="Stone" width="2085" height="1923"/>
-        <image name="apple.logo" catalog="system" width="105" height="128"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
-        <image name="globe" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

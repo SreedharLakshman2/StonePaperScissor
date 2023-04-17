@@ -7,7 +7,6 @@
 
 import UIKit
 import SwiftUI
-import AuthenticationServices
 import GoogleMobileAds
 
 class UserInteractionViewController: UIViewController, GADBannerViewDelegate {

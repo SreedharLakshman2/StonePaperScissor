@@ -61,53 +61,6 @@ struct InfoView: View {
                     }.buttonStyle(GradientButtonStyle(colour1: Color.indigo, colour2: Color.cyan))
                     Spacer()
                 }
-                // SignOut Google account
-                if (defaults.bool(forKey: "isSignInCompleted") && (defaults.bool(forKey: "isSignInCompletedWithGoogleAccount"))) {
-                     Button(action: {
-                         presentAlertToSignoutGoogleAccount = true
-                    }){
-                        HStack {
-                             Text(" Logout ")
-                                .font(.system(size: 15))
-                                .bold()
-                        }
-                    }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.red))
-                    .alert("Logout Alert", isPresented: $presentAlertToSignoutGoogleAccount, actions: {
-                        Button("Confirm", role: .destructive, action: {
-                            GIDSignIn.sharedInstance.signOut()
-                            UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
-                            UserDefaults.standard.set(false, forKey: "isSignInCompletedWithGoogleAccount")
-                            UserDefaults.standard.set("", forKey: "GoogleUserName")
-                            isSignOutHappend = true
-                            self.presentationMode.wrappedValue.dismiss()
-                        })
-                            }, message: {
-                              Text("Your account information will be lost once you confirm logout, If u want to logout Please tap on confirm button.")
-                            })
-                }
-                // SignOut Apple account
-                if (defaults.bool(forKey: "isSignInCompleted") && (defaults.bool(forKey: "isSignInCompletedWithAppleAccount"))) {
-                     Button(action: {
-                         presentAlertToSignoutAppleAccount = true
-                    }){
-                        HStack {
-                            Text(" Logout ")
-                                .font(.system(size: 15))
-                                .bold()
-                        }
-                    }.buttonStyle(GradientButtonStyle(colour1: Color.red, colour2: Color.red))
-                        .alert("Logout Alert", isPresented: $presentAlertToSignoutAppleAccount, actions: {
-                            Button("Confirm", role: .destructive, action: {
-                                UserDefaults.standard.set(false, forKey: "isSignInCompleted") //Bool
-                                UserDefaults.standard.set(false, forKey: "isSignInCompletedWithAppleAccount")
-                                UserDefaults.standard.set("", forKey: "AppleUserName")
-                                isSignOutHappend = true
-                                self.presentationMode.wrappedValue.dismiss()
-                            })
-                                }, message: {
-                                    Text("Your account information will be lost once you confirm logout, If u want to logout Please tap on confirm button.")
-                                })
-                }
                 Spacer()
             }.padding(.all, 20)
                 .edgesIgnoringSafeArea(.top) //or .edgesIgnoringSafeArea(.all)
